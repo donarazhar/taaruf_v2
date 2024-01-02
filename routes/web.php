@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['guest:karyawan'])->group(function () {
+    Route::get('/', function () {
+        return view('dashboard.beranda');
+    })->name('home');
+});
+
+Route::middleware(['guest:user'])->group(function () {
+    Route::get('/panel', function () {
+        return view('auth.login');
+    })->name('login');
+    Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
 });
