@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,29 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['guest:karyawan'])->group(function () {
     Route::get('/', function () {
         return view('dashboard.beranda');
-    })->name('home');
+    });
+    Route::get('/daftar', function () {
+        return view('dashboard.daftar');
+    })->name('daftar');
+    Route::get('/login', function () {
+        return view('dashboard.login');
+    })->name('login');
+
+    Route::post('/prosesdaftar', [AuthController::class, 'prosesdaftar']);
+    Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
 });
+
 
 Route::middleware(['guest:user'])->group(function () {
     Route::get('/panel', function () {
         return view('auth.login');
-    })->name('login');
-    Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
+    })->name('loginuser');
+    Route::post('/prosesloginuser', [AuthController::class, 'prosesloginuser']);
+});
+
+
+Route::middleware(['guest:karyawan'])->group(function () {
+
+    Route::get('/proseslogout', [AuthController::class, 'proseslogout']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 });
