@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
+        $email = Auth::guard('karyawan')->user()->email;
         return view('dashboard.index');
     }
 }

@@ -12,8 +12,8 @@ class Karyawan extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = "karyawan";
-    protected $primaryKey = "email";
+    // protected $table = "karyawan";
+    // protected $primaryKey = "email";
 
     // Agar tanda string -," muncul di datatable
     // public $incrementing = false;
