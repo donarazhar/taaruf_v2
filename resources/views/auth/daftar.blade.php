@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.bootstrap')
+@extends('layouts.bootstrap')
 @section('content')
     <!--  CSS Pop up untuk memasukkan NIP -->
     <style>

@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.bootstrap')
+@extends('layouts.bootstrap')
 @section('content')
     <!-- ======= Hero Section ======= -->
     <section id="hero">

@@ -51,10 +51,10 @@
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
-        @include('dashboard.layouts.header')
+        @include('layouts.header')
     </header><!-- End Header -->
     @yield('content')
-    @include('dashboard.layouts.footer')
+    @include('layouts.footer')
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

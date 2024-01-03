@@ -17,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 // ROUTE TAMU/PENGGUNA TANPA LOGIN
 Route::middleware(['guest:karyawan'])->group(function () {
     Route::get('/', function () {
-        return view('dashboard.beranda');
+        return view('auth.beranda');
     })->name('/');
     Route::get('/daftar', function () {
-        return view('dashboard.daftar');
+        return view('auth.daftar');
     })->name('daftar');
     Route::get('/login', function () {
-        return view('dashboard.login');
+        return view('auth.login');
     })->name('login');
     Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
     Route::post('/prosesdaftar', [AuthController::class, 'prosesdaftar']);
@@ -37,6 +37,9 @@ Route::middleware(['guest:user'])->group(function () {
 
 // ROUTE AUTH
 Route::middleware(['auth:karyawan'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/proseslogout', [AuthController::class, 'proseslogout']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/profile', [DashboardController::class, 'profile']);
+    Route::get('/taaruf', [DashboardController::class, 'taaruf']);
+    Route::get('/progress', [DashboardController::class, 'progress']);
 });
