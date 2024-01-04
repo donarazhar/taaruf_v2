@@ -2,72 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#0134d4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Title-->
+    <title>Taaruf Jodohku V.2.0</title>
+    <link rel="shortcut icon" href="https://siap.al-azhar.id/upload/favicon.ico" type="image/x-icon" />
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+        rel="stylesheet">
 
-    <!--=============== BOXICONS ===============-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
-    <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/assets/css/styles.css') }}">
-
-    <title>Taaruf Dashboard</title>
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/ion.rangeSlider.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('apk/assets/css/apexcharts.css') }}">
+    <!-- Core Stylesheet-->
+    <link rel="stylesheet" href="{{ asset('apk/style.css') }}">
+    <!-- Web App Manifest-->
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
-
-    <!--=============== HEADER ===============-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="#" class="nav__logo">{{ $dataprofile->nama }}</a>
-
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="/dashboard" class="nav__link active-link">
-                            <i class='bx bx-home-alt nav__icon'></i>
-                            <span class="nav__name">Home</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/profile" class="nav__link">
-                            <i class='bx bx-user nav__icon'></i>
-                            <span class="nav__name">Profile</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/taaruf" class="nav__link">
-                            <i class='bx bx-book-alt nav__icon'></i>
-                            <span class="nav__name">Taaruf</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/progress" class="nav__link">
-                            <i class='bx bx-briefcase-alt nav__icon'></i>
-                            <span class="nav__name">Progress</span>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="/proseslogout" class="nav__link">
-                            <i class='bx bx-message-square-detail nav__icon'></i>
-                            <span class="nav__name">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav__img">
-                @if (!empty(Auth::guard('karyawan')->user()->foto))
-                    @php
-                        $path = Storage::url('uploads/karyawan/' . Auth::guard('karyawan')->user()->foto);
-                    @endphp
-                    <img src="{{ url($path) }}" alt="avatar" class="imaged w64" style="height:60px">
-                @else
-                    <img src="{{ asset('assets/img/avatar1.jpg') }}" alt="avatar" class="imaged w64 rounded">
-                @endif
-
-        </nav>
-    </header>
