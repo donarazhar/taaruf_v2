@@ -113,7 +113,7 @@
                                         <div class="form-group php-email-form" role="form">
                                             <div class="row">
                                                 <div class="col-md-12 form-group">
-                                                    <input type="text" name="nip" maxlength="12" class="form-control"
+                                                    <input type="text" name="nip" maxlength="10" class="form-control"
                                                         id="nip" placeholder="Masukkan NIP" pattern="\d*"
                                                         title="Hanya angka yang diperbolehkan"
                                                         oninput="this.value = this.value.replace(/[^0-9]/g, '').substring(0, 12)"

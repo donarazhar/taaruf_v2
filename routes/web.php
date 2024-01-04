@@ -42,4 +42,7 @@ Route::middleware(['auth:karyawan'])->group(function () {
     Route::get('/profile', [DashboardController::class, 'profile']);
     Route::get('/taaruf', [DashboardController::class, 'taaruf']);
     Route::get('/progress', [DashboardController::class, 'progress']);
+    Route::post('/profile/{email}/updateprofile', [DashboardController::class, 'updateprofile']);
+    Route::post('/profile/{email}/updateprofile2', [DashboardController::class, 'updateprofile2']);
+    Route::post('/profile/{email}/updateprofile3', [DashboardController::class, 'updateprofile3']);
 });

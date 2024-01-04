@@ -12,9 +12,22 @@
     <div class="container">
         <div
             class="header-content header-style-five position-relative d-flex align-items-center justify-content-between">
-            <!-- Logo Wrapper-->
-            <div class="logo-wrapper"><a href="/dashboard"><img src="{{ asset('apk/assets/img/icons/ACoding.png') }}"
-                        alt=""></a></div>
+            <div class="logo-wrapper">
+                <a href="/dashboard">
+                    {{-- Foto profile --}}
+                    <div class="avatar">
+                        @php
+                            $user = Auth::guard('karyawan')->user();
+                            $path = !empty($user->foto) ? Storage::url('uploads/karyawan/img/' . $user->foto) : '';
+                            $defaultAvatar = $user->jenkel === 'pria' ? 'avatar.jpg' : 'avatarwanita.jpg';
+                        @endphp
+                        <img src="{{ !empty($path) ? url($path) : asset('assets/img/' . $defaultAvatar) }}"
+                            alt="avatar" class="imaged w64 {{ $user->jenkel === 'pria' ? '' : 'img-fluid' }}"
+                            style="height:60px">
+                    </div>
+                    {{-- Akhir Foto Profile --}}
+                </a>
+            </div>
             <!-- Navbar Toggler-->
             <div class="navbar--toggler" id="affanNavbarToggler"><span class="d-block"></span><span
                     class="d-block"></span><span class="d-block"></span></div>
@@ -58,12 +71,25 @@
     <!-- Sidenav Profile-->
     <div class="sidenav-profile">
         <div class="sidenav-style1"></div>
-        <!-- User Thumbnail-->
-        <div class="user-profile"><img src="./apk/assets/img/icons/ACoding.png" alt=""></div>
-        <!-- User Info-->
-        <div class="user-info">
-            <h6 class="user-name mb-0">Animation Coding</h6><span>Animation Pro</span>
+        {{-- Foto profile --}}
+        <div class="user-profile">
+            <div class="avatar">
+                @php
+                    $user = Auth::guard('karyawan')->user();
+                    $path = !empty($user->foto) ? Storage::url('uploads/karyawan/img/' . $user->foto) : '';
+                    $defaultAvatar = $user->jenkel === 'pria' ? 'avatar.jpg' : 'avatarwanita.jpg';
+                @endphp
+                <img src="{{ !empty($path) ? url($path) : asset('assets/img/' . $defaultAvatar) }}" alt="avatar"
+                    class="imaged w64 {{ $user->jenkel === 'pria' ? '' : 'img-fluid' }}" style="height:60px">
+            </div>
         </div>
+        {{-- Akhir Foto Profile --}}
+        {{-- Nama User --}}
+        <div class="user-info">
+            <h6 class="user-name mb-0 text-dark">{{ $dataprofile->nama }}</h6>
+            <span class="user-name mb-0 text-dark">{{ $dataprofile->email }} </span>
+        </div>
+        {{-- Akhir Nama User --}}
     </div>
     <!-- Sidenav Nav-->
     <ul class="sidenav-nav ps-0">

@@ -36,7 +36,6 @@ class AuthController extends Controller
                 return Redirect::back()->with(['success' => 'Berhasil Mendaftar !!!, Mohon menunggu email konfirmasi untuk LOGIN.']);
             }
         } catch (\Exception $e) {
-            dd($e);
             return Redirect::back()->with(['warning' => 'Maaf ada kesalahan inputan']);
         }
     }

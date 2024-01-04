@@ -18,4 +18,5 @@
 <script src="{{ asset('apk/assets/js/default/clipboard.js') }}"></script>
 <!-- PWA-->
 <script src="{{ asset('apk/assets/js/pwa.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.mask.min.js') }}"></script>
 @stack('myscript')
