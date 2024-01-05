@@ -3287,7 +3287,7 @@ box-shadow: 4px 4px 12px rgba(13, 39, 80, 0.25), -4px -4px 12px white !important
   background: linear-gradient(to right, #29ffc6, #20e3b2, #0cebeb); }
 
 .card-body {
-  padding: 1.5rem; }
+  padding: 0.5rem; }
 
 
 .cta-card {
@@ -6170,9 +6170,9 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 /* :: Demo CSS */
 .feature-card .card {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
+  width: 5rem;
+  height: 100%;
+  /* border-radius: 50%; */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

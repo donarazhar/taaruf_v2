@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TaarufContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,4 +46,7 @@ Route::middleware(['auth:karyawan'])->group(function () {
     Route::post('/profile/{email}/updateprofile', [DashboardController::class, 'updateprofile']);
     Route::post('/profile/{email}/updateprofile2', [DashboardController::class, 'updateprofile2']);
     Route::post('/profile/{email}/updateprofile3', [DashboardController::class, 'updateprofile3']);
+
+    // Taaruf
+    Route::get('/taaruf/{email}/lihatprofile', [TaarufContoller::class, 'lihatprofile']);
 });

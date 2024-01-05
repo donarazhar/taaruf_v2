@@ -1,189 +1,239 @@
 @extends('dashboard.dashlayouts.style')
 <div class="section">
     <!-- Hero Slides-->
-    <div class="owl-carousel-one owl-carousel">
+    <div class="owl-carousel-one owl-carousel mb-3">
         <!-- Single Hero Slide-->
-        <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/31.jpg')">
+        <div class="single-hero-slide bg-overlay"
+            style="background-image: url('{{ asset('apk/assets/img/bg-img/maa.jpg') }}')">
             <div class="slide-content h-100 d-flex align-items-center text-center">
                 <div class="container">
-                    <h4 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="500ms">Build
-                        with Bootstrap 5</h4>
-                    <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="500ms">
-                        Build
-                        fast, responsive sites with Bootstrap.</p><a class="btn btn-creative btn-warning" href="#"
-                        data-animation="fadeInUp" data-delay="800ms" data-wow-duration="500ms">Buy Now</a>
+                    <h4 class="text-white mt-5" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">
+                        Ta'aruf Jodohku v.2.0</h4>
+                    <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">
+                        Temukan pasangan sempurna anda diantara karyawan YPI Al Azhar melalui apllikasi ini.</p><a
+                        class="btn btn-creative btn-warning" href="/taaruf" data-animation="fadeInUp" data-delay="800ms"
+                        data-wow-duration="500ms">Lanjutkan</a>
                 </div>
             </div>
         </div>
         <!-- Single Hero Slide-->
-        <div class="single-hero-slide bg-overlay" style="background-image: url('./apk/assets/img/bg-img/32.jpg')">
+        <div class="single-hero-slide bg-overlay"
+            style="background-image: url('{{ asset('apk/assets/img/bg-img/nikah.jpg') }}')">
             <div class="slide-content h-100 d-flex align-items-center text-center">
                 <div class="container">
-                    <h4 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">
-                        PWA
-                        ready</h4>
+                    <h4 class="text-white mt-5" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">
+                        Aula Buya Hamka</h4>
                     <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">
-                        Make
-                        your website feel more like a native app.</p><a class="btn btn-creative btn-warning"
-                        href="#" data-animation="fadeInUp" data-delay="800ms" data-wow-duration="500ms">Buy
-                        Now</a>
+                        Masjid Agung Al Azhar menyediakan aula serba guna untuk acara yang anda niatkan.</p><a
+                        class="btn btn-creative btn-warning" href="https://www.instagram.com/abhalazhar/?hl=id"
+                        target="_blank" data-animation="fadeInUp" data-delay="800ms"
+                        data-wow-duration="500ms">Lanjutkan</a>
                 </div>
             </div>
         </div>
         <!-- Single Hero Slide-->
-        <div class="single-hero-slide bg-overlay" style="background-image: url('./apk/assets/img/bg-img/33.jpg')">
+        <div class="single-hero-slide bg-overlay"
+            style="background-image: url('{{ asset('apk/assets/img/bg-img/konsul.jpg') }}')">
             <div class="slide-content h-100 d-flex align-items-center text-center">
                 <div class="container">
-                    <h4 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">
-                        Unique elements &amp; pages</h4>
+                    <h4 class="text-white mt-5" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">
+                        Layanan Konsultasi</h4>
                     <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">
-                        Create your website in minutes, not weeks.</p><a class="btn btn-creative btn-warning"
-                        href="#" data-animation="fadeInUp" data-delay="800ms" data-wow-duration="500ms">Buy
-                        Now</a>
-                </div>
-            </div>
-        </div>
-        <!-- Single Hero Slide-->
-        <div class="single-hero-slide bg-overlay" style="background-image: url('./apk/assets/img/bg-img/1.jpg')">
-            <div class="slide-content h-100 d-flex align-items-center text-center">
-                <div class="container">
-                    <h4 class="text-white mb-1" data-animation="fadeInUp" data-delay="100ms" data-wow-duration="1000ms">
-                        Dark &amp; rtl ready</h4>
-                    <p class="text-white mb-4" data-animation="fadeInUp" data-delay="400ms" data-wow-duration="1000ms">
-                        You
-                        can use Dark or RTL mode of your choice.</p><a class="btn btn-creative btn-warning"
-                        href="#" data-animation="fadeInUp" data-delay="800ms" data-wow-duration="500ms">Buy
-                        Now</a>
+                        Konsultasikan semua permasalahan anda bersama ustadz di Masjid Agung Al Azhar.</p><a
+                        class="btn btn-creative btn-warning" href="https://wa.link/w2hf7i" target="_blank"
+                        data-animation="fadeInUp" data-delay="800ms" data-wow-duration="500ms">Lanjutkan</a>
                 </div>
             </div>
         </div>
     </div>
-    {{-- Tombol Tengah --}}
-    <div class="py-4">
-        <div class="container direction-rtl">
-            <div class="row g-3">
-                <div class="col-3">
-                    <div class="feature-card text-center">
-                        <div class="card shadow mx-auto"><img src="./apk/assets/img/demo-img/bootstrap.png"
-                                alt="">
+
+    {{-- Area Unit dan Masjid --}}
+    <div class="py-2">
+        <div class="container direction-rtl mb-3">
+            <div class="row g-4">
+                <div class="col-4">
+                    <div class="feature-card mx-auto text-center direction-rtl">
+                        <div class="card shadow mx-auto">
+                            <a class="mx-auto" href="https://www.al-azhar.or.id/" target="_blank">
+                                <img src="{{ asset('apk/assets/img/demo-img/logoypi.png') }}" alt="">
+                            </a>
                         </div>
-                        <p class="mb-0">Bootstrap 5</p>
+                        <p>
+                            <a href="https://www.al-azhar.or.id/" class="mb-0">YPI Al Azhar
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><img src="./apk/assets/img/demo-img/pwa.png" alt="">
+                <div class="col-4">
+                    <div class="feature-card mx-auto text-center direction-rtl">
+                        <div class="card shadow mx-auto">
+                            <a class="mx-auto" href="https://www.masjidagungalazhar.com/" target="_blank">
+                                <img src="{{ asset('apk/assets/img/demo-img/logomaa.png') }}" alt="">
+                            </a>
                         </div>
-                        <p class="mb-0">PWA ready</p>
+                        <p>
+                            <a href="https://www.masjidagungalazhar.com/" class="mb-0">MAA
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><img src="./apk/assets/img/demo-img/sass.png" alt="">
+                        <div class="card shadow mx-auto">
+                            <a class="mx-auto" href="https://alazharpeduli.or.id/" target="_blank">
+                                <img src="{{ asset('apk/assets/img/demo-img/logolaz.png') }}" alt="">
+                            </a>
                         </div>
-                        <p class="mb-0">Sass </p>
+                        <p>
+                            <a href="https://alazharpeduli.or.id/" class="mb-0">LAZ Al Azhar
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><img src="./apk/assets/img/demo-img/pug.png" alt="">
+                        <div class="card shadow mx-auto">
+                            <a class="mx-auto" href="https://wakafalazhar.com/" target="_blank">
+                                <img src="{{ asset('apk/assets/img/demo-img/logowakaf.png') }}" alt="">
+                            </a>
                         </div>
-                        <p class="mb-0">Pug</p>
+                        <p>
+                            <a href="https://wakafalazhar.com/" class="mb-0">Wakaf Al Azhar
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><img src="./apk/assets/img/demo-img/npm.png" alt="">
+                        <div class="card shadow mx-auto">
+                            <a class="mx-auto" href="https://donasi.online/masjid-agung-al-azhar/donasi"
+                                target="_blank">
+                                <img src="{{ asset('apk/assets/img/demo-img/donasi.png') }}" alt="">
+                            </a>
                         </div>
-                        <p class="mb-0">npm</p>
+                        <p>
+                            <a href="https://donasi.online/masjid-agung-al-azhar/donasi" class="mb-0">Donasi MAA
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><img src="./apk/assets/img/demo-img/gulp.png"
-                                alt="">
+                        <div class="card shadow mx-auto">
+                            <a class="mx-auto" href="https://www.instagram.com/abhalazhar/?hl=id" target="_blank">
+                                <img src="{{ asset('apk/assets/img/demo-img/abh.png') }}" alt="">
+                            </a>
                         </div>
-                        <p class="mb-0">gulp.js</p>
+                        <p>
+                            <a href="https://www.instagram.com/abhalazhar/?hl=id" class="mb-0">Aula Buya Hamka
+                            </a>
+                        </p>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><i class="bi bi-box-arrow-left text-primary"></i></div>
-                        <p class="mb-0">RTL ready</p>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="feature-card mx-auto text-center">
-                        <div class="card shadow mx-auto"><i class="bi bi-moon text-dark"></i></div>
-                        <p class="mb-0">Dark mode</p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
-    <div class="container">
+
+    <div class="section bg-overlay mt-3">
         <div class="row">
             <div class="col-12">
-                <div class="card bg-light mb-3 shadow-sm bg-primary direction-rtl">
-                    <div class="card-body">
-                        <h2 class="text-dark">Reusable elements</h2>
-                        <p class="text-dark mb-4">More than 220+ reusable modern design elements. Just copy the
-                            code and paste it on your desired page.</p><a class="btn btn-info"
-                            href="elements.html">All
-                            elements</a>
+                <h4 class="text-center align-content-center text-light">Berita & Artikel</h4>
+            </div>
+        </div>
+    </div>
+    {{-- Area Berita --}}
+    <div class="py-2">
+        <div class="container direction-rtl mb-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-8">
+                    <div class="card feature-card mb-3 direction-rtl">
+                        <div class="card-body">
+                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="">
+                            <h3 class="mt-2">Panduan dan Tips Taa'ruf Modern </h3>
+                            <p class="text-dark mb-4">Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
+                                sudah menjadi teman sejak kecil, dipertemukan di sekolah atau di tempat bekerja, atau
+                                mungkin ada yang dijodohkan.</p><a class="btn btn-info"
+                                href="#">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                    <div class="card feature-card mb-1 direction-rtl">
+                        <div class="card-body d-flex mx-auto">
+                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="" width="80"
+                                height="80" style="margin-right: 10px">
+                            <p>Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
+                                sudah menjadi teman sejak kecil... <a href="#"><b>Selengkapnya</b></a> </p>
+                        </div>
+                    </div>
+                    <div class="card feature-card mb-1 direction-rtl">
+                        <div class="card-body d-flex mx-auto">
+                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="" width="80"
+                                height="80" style="margin-right: 10px">
+                            <p>Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
+                                sudah menjadi teman sejak kecil... <a href="#"><b>Selengkapnya</b></a> </p>
+                        </div>
+                    </div>
+                    <div class="card feature-card mb-1 direction-rtl">
+                        <div class="card-body d-flex mx-auto">
+                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="" width="80"
+                                height="80" style="margin-right: 10px">
+                            <p>Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
+                                sudah menjadi teman sejak kecil... <a href="#"><b>Selengkapnya</b></a> </p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    {{-- Kontak Kami --}}
+    <div class="section bg-overlay">
+        <div class="row">
             <div class="col-12">
-                <div class="card bg-light mb-3 shadow-sm bg-primary direction-rtl">
+                <h4 class="mb-1 mt-2 text-light text-center">Kontak Kami</h4>
+                <div class="container direction-rtl">
                     <div class="card-body">
-                        <h2 class="text-dark">Ready pages</h2>
-                        <p class="text-dark mb-4">Already designed more than 35+ pages for your needs. Such as -
-                            Authentication, Chats, eCommerce, Blog &amp; Miscellaneous pages.</p><a
-                            class="btn btn-info" href="pages.html">All pages</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h2>Customer Review</h2>
-                <div class="testimonial-slide owl-carousel testimonial-style3">
-                    <!-- Single Testimonial Slide-->
-                    <div class="single-testimonial-slide">
-                        <div class="text-content"><span class="d-inline-block badge bg-warning mb-2"><i
-                                    class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i
-                                    class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i
-                                    class="bi bi-star-fill"></i></span>
-                            <h6 class="mb-2">The code looks clean, and the designs are excellent. I recommend.
-                            </h6><span class="d-block">Mrrickez, Themeforest</span>
-                        </div>
-                    </div>
-                    <!-- Single Testimonial Slide-->
-                    <div class="single-testimonial-slide">
-                        <div class="text-content"><span class="d-inline-block badge bg-warning mb-2"><i
-                                    class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i
-                                    class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i
-                                    class="bi bi-star-fill"></i></span>
-                            <h6 class="mb-2">All complete, <br> great craft.</h6><span class="d-block">Mazatlumm,
-                                Themeforest</span>
-                        </div>
-                    </div>
-                    <!-- Single Testimonial Slide-->
-                    <div class="single-testimonial-slide">
-                        <div class="text-content"><span class="d-inline-block badge bg-warning mb-2"><i
-                                    class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i
-                                    class="bi bi-star-fill me-1"></i><i class="bi bi-star-fill me-1"></i><i
-                                    class="bi bi-star-fill"></i></span>
-                            <h6 class="mb-2">Awesome template! <br> Excellent support!</h6><span
-                                class="d-block">Vguntars, Themeforest</span>
+                        <div class="contact-form">
+                            <form action="#">
+                                <div class="form-group mb-2">
+                                    <input class="form-control" type="email" placeholder="Masukkan email">
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input type="text" class="form-control" name="textarea"
+                                        placeholder="Tulis pesan"></input>
+                                </div>
+                                <a class="btn btn-info w-100" href="#">Kirim</a>
+                            </form>
                         </div>
                     </div>
                 </div>
+                <h4 class="mb-1 text-light text-center">Lokasi</h4>
+                <div class="container direction-rtl">
+                    <div class="card-body">
+                        <iframe
+                            src="https://maps.google.com/maps?q=masjid%20agung%20al%20azhar&amp;t=k&amp;z=19&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+                            frameborder="0" scrolling="no" style="width: 100%"></iframe>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{-- Footer --}}
+    <div class="section bg-overlay">
+        <div class="row">
+            <div class="col-12">
+                <p class="text-light text-center mt-3"><small>Copyright 2024 | Direktorat Dakwah Sosial<br> | Created
+                        by
+                        DAL
+                        Army</small></p>
             </div>
         </div>
     </div>
-    <div class="pb-3"></div>
+
+
 </div>

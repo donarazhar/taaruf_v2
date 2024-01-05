@@ -16,10 +16,10 @@
 
                 @foreach ($users as $user)
                     <!-- Single Blog Card-->
-                    <div class="col-6 col-sm-4 col-md-3">
+                    <div class="col-4 col-sm-4 col-md-3">
                         <div class="card position-relative shadow-sm">
                             @php
-                                $path = !empty($user->foto) ? Storage::url('uploads/karyawan/' . $user->foto) : '';
+                                $path = !empty($user->foto) ? Storage::url('uploads/karyawan/img/' . $user->foto) : '';
                                 $defaultAvatar = $user->jenkel === 'pria' ? 'avatar.jpg' : 'avatarwanita.jpg';
                             @endphp
                             <img class="card-img-top {{ $user->jenkel === 'pria' ? '' : 'img-fluid' }}"
@@ -34,18 +34,19 @@
                                         @if ($user->referensi == 2 && !is_null($user->referensi_detail))
                                             {{ $user->referensi_detail }}
                                         @elseif ($user->referensi == 1)
-                                            {{ $user->referensi_detail ?? 'Pegawai Al Azhar' }}
+                                            {{ $user->referensi_detail ?? '-' }}
                                         @endif
                                     </b>
                                 </small>
-                                <a class="btn btn-primary btn-sm" href="page-blog-details.html">Read More</a>
+                                <a class="btn btn-primary btn-sm"
+                                    href="/taaruf/{{ $user->email }}/lihatprofile">Lihat</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                {{-- Menampilkan data karyawan yang berlawanan jenis kelamin --}}
-
             </div>
         </div>
     </div>
 </div>
+@push('myscript')
+@endpush
