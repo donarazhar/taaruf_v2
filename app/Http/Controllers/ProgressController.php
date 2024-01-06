@@ -55,13 +55,34 @@ class ProgressController extends Controller
         // Mendapatkan email auth
         $emailAuth = Auth::guard('karyawan')->user()->email;
 
-        // Proses update atau insert
-        DB::table('LikeDislike')->updateOrInsert(
-            ['id_progress' => $id, 'emailAct' => $emailAuth],
-            ['status' => 0]
-        );
+        // Mendapatkan data progress yang akan dipindahkan
+        $progressData = DB::table('progress')->where('id', $id)->first();
 
-        // Redirect atau lakukan operasi lain sesuai kebutuhan
-        return Redirect::back()->with(['success' => 'Terima kasih anda sudah melakukan pilihan !!!']);
+        if ($progressData) {
+            // Proses insert ke tabel progress_shadow
+            DB::table('progress_shadow')->insert([
+                'id' => $progressData->id,
+                'email_auth' => $progressData->email_auth,
+                'email_profile' => $progressData->email_profile,
+                'progress_tgl' => $progressData->progress_tgl,
+                'status' => $progressData->status,
+
+            ]);
+
+            // Proses hapus data dari tabel progress
+            DB::table('progress')->where('id', $id)->delete();
+
+            // Proses update atau insert LikeDislike
+            DB::table('LikeDislike')->updateOrInsert(
+                ['id_progress' => $id, 'emailact' => $emailAuth],
+                ['status' => 0]
+            );
+
+            // Redirect atau lakukan operasi lain sesuai kebutuhan
+            return Redirect::back()->with(['success' => 'Terima kasih, sistem akan menghapus data dalam 2 jam !!!']);
+        } else {
+            // Data progress tidak ditemukan, mungkin ada penanganan khusus yang perlu dilakukan
+            return Redirect::back()->with(['error' => 'Data progress tidak ditemukan.']);
+        }
     }
 }
