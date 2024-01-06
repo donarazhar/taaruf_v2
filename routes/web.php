@@ -49,4 +49,5 @@ Route::middleware(['auth:karyawan'])->group(function () {
 
     // Taaruf
     Route::get('/taaruf/{email}/lihatprofile', [TaarufContoller::class, 'lihatprofile']);
+    Route::post('/taaruf/progressprofile', [TaarufContoller::class, 'progressprofile']);
 });

@@ -13,7 +13,6 @@
                         ->where('jenkel', $oppositeGender)
                         ->get();
                 @endphp
-
                 @foreach ($users as $user)
                     <!-- Single Blog Card-->
                     <div class="col-4 col-sm-4 col-md-3">
@@ -38,8 +37,8 @@
                                         @endif
                                     </b>
                                 </small>
-                                <a class="btn btn-primary btn-sm"
-                                    href="/taaruf/{{ $user->email }}/lihatprofile">Lihat</a>
+                                <a class="btn btn-primary btn-sm" href="/taaruf/{{ $user->email }}/lihatprofile">Lihat
+                                </a>
                             </div>
                         </div>
                     </div>
