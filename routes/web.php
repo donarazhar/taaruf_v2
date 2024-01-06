@@ -55,4 +55,6 @@ Route::middleware(['auth:karyawan'])->group(function () {
 
     // Progress
     Route::get('/progress', [ProgressController::class, 'index']);
+    Route::get('/like/{id}', [ProgressController::class, 'like'])->name('like');
+    Route::get('/dislike/{id}', [ProgressController::class, 'dislike'])->name('dislike');
 });

@@ -151,13 +151,13 @@ class DashboardController extends Controller
                 'alamat' => $alamat,
                 'video' => $video,
             ];
+
             // Lakukan insert jika belum ada data, atau update jika sudah ada
             if ($adaData) {
                 DB::table('biodata')->where('email', $email)->update($data);
             } else {
                 DB::table('biodata')->insert($data);
             }
-
             return Redirect::back()->with(['success' => 'Berhasil diupdate']);
         } catch (\Exception $e) {
             return Redirect::back()->with(['warning' => 'Maaf ada kesalahan inputan']);

@@ -145,7 +145,7 @@
                     <div class="accordion-body">
                         <div class="card user-data-card">
                             <div class="card-body">
-                                <form action="/profile/{{ $dataprofile->email }}/updateprofile3" method="POST"
+                                <form action="/profile/{{ $dataprofile->email }}/updateprofile2" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-3">

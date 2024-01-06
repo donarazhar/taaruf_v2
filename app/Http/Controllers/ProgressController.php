@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class ProgressController extends Controller
 {
@@ -26,9 +27,41 @@ class ProgressController extends Controller
                     ->orWhere('progress.email_profile', $user);
             })
             ->where('progress.status', 1)
-            ->select('progress.*', 'karyawan.*')
+            ->select('progress.*', 'karyawan.nama')
             ->get();
 
-        return view('dashboard.progress.index', compact('dataprogress', 'karyawan'));
+        $likedislike = DB::table('likedislike')->get();
+
+        return view('dashboard.progress.index', compact('dataprogress', 'karyawan', 'likedislike'));
+    }
+
+    public function like($id)
+    {
+        // Mendapatkan email auth
+        $emailAuth = Auth::guard('karyawan')->user()->email;
+
+        // Proses update atau insert
+        DB::table('LikeDislike')->updateOrInsert(
+            ['id_progress' => $id, 'emailAct' => $emailAuth],
+            ['status' => 1]
+        );
+
+        // Redirect atau lakukan operasi lain sesuai kebutuhan
+        return Redirect::back()->with(['success' => 'Terima kasih anda sudah melakukan pilihan !!!']);
+    }
+
+    public function dislike($id)
+    {
+        // Mendapatkan email auth
+        $emailAuth = Auth::guard('karyawan')->user()->email;
+
+        // Proses update atau insert
+        DB::table('LikeDislike')->updateOrInsert(
+            ['id_progress' => $id, 'emailAct' => $emailAuth],
+            ['status' => 0]
+        );
+
+        // Redirect atau lakukan operasi lain sesuai kebutuhan
+        return Redirect::back()->with(['success' => 'Terima kasih anda sudah melakukan pilihan !!!']);
     }
 }
