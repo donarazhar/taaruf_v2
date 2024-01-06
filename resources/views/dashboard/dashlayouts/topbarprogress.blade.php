@@ -11,7 +11,7 @@
                     </svg></a></div>
             <!-- Page Title-->
             <div class="page-heading">
-                <h6 class="mb-0">Profile {{ $karyawan->nama }} </h6>
+                <h6 class="mb-0">Progress {{ $karyawan->nama }} </h6>
             </div>
             <!-- Settings-->
             <div class="setting-wrapper">
