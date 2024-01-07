@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\TaarufContoller;
@@ -28,14 +29,14 @@ Route::middleware(['guest:karyawan'])->group(function () {
     Route::get('/login', function () {
         return view('auth.login');
     })->name('login');
-    Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
     Route::post('/prosesdaftar', [AuthController::class, 'prosesdaftar']);
+    Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
 });
 Route::middleware(['guest:user'])->group(function () {
     Route::get('/panel', function () {
-        return view('auth.login');
-    })->name('loginuser');
-    Route::post('/prosesloginuser', [AuthController::class, 'prosesloginuser']);
+        return view('authpanel.login');
+    })->name('/panel');
+    Route::post('/prosesloginadmin', [AuthController::class, 'prosesloginadmin']);
 });
 
 // ROUTE AUTH
@@ -61,4 +62,11 @@ Route::middleware(['auth:karyawan'])->group(function () {
 
     // Chat
     Route::get('/chat/{id}', [ChatController::class, 'chat'])->name('chat');
+    Route::post('/chat/{id}/store', [ChatController::class, 'store'])->name('store');
+});
+
+
+Route::middleware(['auth:user'])->group(function () {
+    Route::get('/dashboardadmin', [DashboardAdminController::class, 'index'])->name('dashboardadmin');
+    Route::get('/proseslogoutadmin', [AuthController::class, 'proseslogoutadmin']);
 });

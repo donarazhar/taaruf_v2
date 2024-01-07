@@ -55,7 +55,12 @@ class ProgressController extends Controller
         $emailAuth = Auth::guard('karyawan')->user()->email;
 
         // Mendapatkan data progress yang akan dipindahkan
-        $progressData = DB::table('progress')->where('id', $id)->first();
+        $progressData = DB::table('progress')
+            ->leftJoin('likedislike', 'progress.id', '=', 'likedislike.id_progress')
+            ->leftJoin('chat', 'progress.id', '=', 'chat.id_progress')
+            ->select('progress.*', 'chat.*', 'likedislike.*', 'chat.id as chat_id', 'likedislike.id as likedislike_id')
+            ->where('progress.id', $id)
+            ->first();
 
         if ($progressData) {
             // Proses insert ke tabel progress_shadow
@@ -65,20 +70,40 @@ class ProgressController extends Controller
                 'email_profile' => $progressData->email_profile,
                 'progress_tgl' => $progressData->progress_tgl,
                 'status' => $progressData->status,
-
             ]);
+
+            // Proses insert ke tabel likedislike_shadow
+            DB::table('likedislike_shadow')->insert([
+                'id' => $progressData->likedislike_id,
+                'id_progress' => $progressData->id,
+                'emailact' => $emailAuth,
+                'status' => 0,
+            ]);
+
+            // Proses pindah semua data dari tabel chat ke chat_shadow
+            $chatData = DB::table('chat')->where('id_progress', $id)->get();
+
+            foreach ($chatData as $chatRow) {
+                DB::table('chat_shadow')->insert([
+                    'id' => $chatRow->id,
+                    'id_progress' => $chatRow->id_progress,
+                    'pesan' => $chatRow->pesan,
+                    'email_sender' => $chatRow->email_sender,
+                    'tgl_pesan' => $chatRow->tgl_pesan,
+                ]);
+            }
+
+            // Proses hapus semua data dari tabel chat
+            DB::table('chat')->where('id_progress', $id)->delete();
+
+            // Proses hapus data dari tabel likedislike
+            DB::table('likedislike')->where('id_progress', $id)->delete();
 
             // Proses hapus data dari tabel progress
             DB::table('progress')->where('id', $id)->delete();
 
-            // Proses update atau insert LikeDislike
-            DB::table('LikeDislike')->updateOrInsert(
-                ['id_progress' => $id, 'emailact' => $emailAuth],
-                ['status' => 0]
-            );
-
             // Redirect atau lakukan operasi lain sesuai kebutuhan
-            return Redirect::back()->with(['success' => 'Terima kasih, sistem akan menghapus data dalam 2 jam !!!']);
+            return Redirect::back()->with(['success' => 'Terima kasih, sistem akan permintaan anda !!!']);
         } else {
             // Data progress tidak ditemukan, mungkin ada penanganan khusus yang perlu dilakukan
             return Redirect::back()->with(['error' => 'Data progress tidak ditemukan.']);

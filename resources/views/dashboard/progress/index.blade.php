@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-sm-12">
-                            <div class="card-body mx-1 mb-3">
+                            <div class="card-body mx-1">
                                 <div class="service-text">
                                     <div class="card position-relative shadow-sm">
                                         {{-- Tombol Dislike --}}
@@ -156,21 +156,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="fab-button animate bottom-right dropdown" style="margin-bottom: 70px">
-                            <a href="{{ route('chat', ['id' => isset($d->id) ? $d->id : 0]) }}"
-                                class="fab bg-light text-dark" data-toggle="dropdown"> Chat
-                                <ion-icon name="add-outline" role="img" class="md hydrated"
-                                    aria-label="add outline"></ion-icon>
-                            </a>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="card-body mx-1 mb-3">
+                                <div class="service-text">
+                                    <div class="card position-relative shadow-sm">
+                                        {{-- Tombol Dislike --}}
+                                        <a class="btn btn-success"
+                                            href="{{ route('chat', ['id' => isset($d->id) ? $d->id : 0]) }}">
+                                            Chat
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn btn-submit" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
-                                width="18" height="18" fill="currentColor" class="bi bi-cursor"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z">
-                                </path>
-                            </svg>
-                        </button>
+                        <div class="fab-button animate bottom-right dropdown" style="margin-bottom: 70px">
+
+                        </div>
                     @endforeach
 
                 </div>
