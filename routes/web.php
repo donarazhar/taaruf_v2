@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\TaarufContoller;
@@ -57,4 +58,7 @@ Route::middleware(['auth:karyawan'])->group(function () {
     Route::get('/progress', [ProgressController::class, 'index']);
     Route::get('/like/{id}', [ProgressController::class, 'like'])->name('like');
     Route::get('/dislike/{id}', [ProgressController::class, 'dislike'])->name('dislike');
+
+    // Chat
+    Route::get('/chat/{id}', [ChatController::class, 'chat'])->name('chat');
 });

@@ -29,7 +29,6 @@ class ProgressController extends Controller
             ->where('progress.status', 1)
             ->select('progress.*', 'karyawan.nama')
             ->get();
-
         $likedislike = DB::table('likedislike')->get();
 
         return view('dashboard.progress.index', compact('dataprogress', 'karyawan', 'likedislike'));
