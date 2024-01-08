@@ -544,7 +544,7 @@
     <script>
         $(function() {
             // Script mask inputan kode tidak boleh lebih dari 10 angka
-            $('#nohp').mask('0000-0000-000000');
+            $('#nohp').mask('0000000000000');
             $('#tinggi').mask('000');
             $('#berat').mask('000');
         });

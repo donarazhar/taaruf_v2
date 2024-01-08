@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- Title-->
+    <link rel="shortcut icon" href="https://siap.al-azhar.id/upload/favicon.ico" type="image/x-icon" />
     <title>Taaruf Jodohku v.2.0</title>
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com/">

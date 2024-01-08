@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MasterInputanController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\TaarufContoller;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::middleware(['guest:karyawan'])->group(function () {
     })->name('login');
     Route::post('/prosesdaftar', [AuthController::class, 'prosesdaftar']);
     Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
+    Route::get('/masterkaryawan/verify/{token}', [MasterInputanController::class, 'verify'])->name('verify');
 });
 Route::middleware(['guest:user'])->group(function () {
     Route::get('/panel', function () {
@@ -69,4 +71,6 @@ Route::middleware(['auth:karyawan'])->group(function () {
 Route::middleware(['auth:user'])->group(function () {
     Route::get('/dashboardadmin', [DashboardAdminController::class, 'index'])->name('dashboardadmin');
     Route::get('/proseslogoutadmin', [AuthController::class, 'proseslogoutadmin']);
+    Route::get('/masterkaryawan', [MasterInputanController::class, 'masterkaryawan'])->name('masterkaryawan');
+    Route::get('/masterkaryawan/{id_karyawan}/verifikasi', [MasterInputanController::class, 'verifikasi'])->name('verifikasi');
 });

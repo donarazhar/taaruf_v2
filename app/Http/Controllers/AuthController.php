@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,10 +44,17 @@ class AuthController extends Controller
     // Login karyawam
     public function proseslogin(Request $request)
     {
-        if (Auth::guard('karyawan')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+        if (Auth::guard('karyawan')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => '1'])) {
             return redirect('/dashboard');
         } else {
-            return redirect('/login')->with(['warning' => 'Username / Password Salah']);
+            $user = Karyawan::where('email', $request->email)->first();
+
+            if ($user && $user->status === null) {
+                return redirect('/login')->with(['warning' => 'Anda belum klik tautan link verifikasi| Cek email sekarang !']);
+            } else {
+                return redirect('/login')->with(['warning' => 'Email atau password salah']);
+            }
         }
     }
 
