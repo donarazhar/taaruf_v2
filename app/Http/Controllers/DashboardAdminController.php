@@ -13,7 +13,8 @@ class DashboardAdminController extends Controller
         // Mendapatkan AUTH
         $email = Auth::guard('user')->user()->email;
         // Mendapatkan data profile berdasarkan email
-        $dataprofile = DB::table('users')->where('email', $email)->first();
-        return view('dashboardadmin.index', compact('dataprofile'));
+        $datauser = DB::table('users')->where('email', $email)->first();
+        $databerita = DB::table('berita')->get();
+        return view('dashboardadmin.index', compact('datauser', 'databerita'));
     }
 }

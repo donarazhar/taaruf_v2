@@ -148,42 +148,44 @@
             <div class="row">
                 <div class="col-sm-12 col-md-8">
                     <div class="card feature-card mb-3 direction-rtl">
-                        <div class="card-body">
-                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="">
-                            <h3 class="mt-2">Panduan dan Tips Taa'ruf Modern </h3>
-                            <p class="text-dark mb-4">Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
-                                sudah menjadi teman sejak kecil, dipertemukan di sekolah atau di tempat bekerja, atau
-                                mungkin ada yang dijodohkan.</p><a class="btn btn-info"
-                                href="#">Selengkapnya</a>
-                        </div>
+                        @if ($databerita->count() > 0)
+                            <div class="card-body">
+                                @php
+                                    $d = $databerita->first();
+                                    $path = Storage::url('uploads/berita/' . $d->foto);
+                                @endphp
+                                <img src="{{ $path }}">
+                                <h3 class="mt-2">{{ $d->judul }} </h3>
+                                <p class="text-dark mb-4">{{ $d->subjudul }}</p>
+                                <a class="btn btn-info"
+                                    href="/masterberita/berita/{{ $d->id }}">Selengkapnya</a>
+                            </div>
+                        @else
+                            <div class="card-body">
+                                <p>Tidak ada berita yang tersedia.</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4">
-                    <div class="card feature-card mb-1 direction-rtl">
-                        <div class="card-body d-flex mx-auto">
-                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="" width="80"
-                                height="80" style="margin-right: 10px">
-                            <p>Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
-                                sudah menjadi teman sejak kecil... <a href="#"><b>Selengkapnya</b></a> </p>
-                        </div>
-                    </div>
-                    <div class="card feature-card mb-1 direction-rtl">
-                        <div class="card-body d-flex mx-auto">
-                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="" width="80"
-                                height="80" style="margin-right: 10px">
-                            <p>Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
-                                sudah menjadi teman sejak kecil... <a href="#"><b>Selengkapnya</b></a> </p>
-                        </div>
-                    </div>
-                    <div class="card feature-card mb-1 direction-rtl">
-                        <div class="card-body d-flex mx-auto">
-                            <img src="{{ asset('apk/assets/img/bg-img/25.jpg') }}" alt="" width="80"
-                                height="80" style="margin-right: 10px">
-                            <p>Menemukan jodoh memang bisa dengan beragam cara. Ada yang memang
-                                sudah menjadi teman sejak kecil... <a href="#"><b>Selengkapnya</b></a> </p>
-                        </div>
-                    </div>
+                    @foreach ($databerita as $index => $d)
+                        @if ($index < 4)
+                            <div class="card feature-card mb-1 direction-rtl">
+                                <div class="card-body d-flex mx-auto">
+                                    @php
+                                        $path = Storage::url('uploads/berita/' . $d->foto);
+                                    @endphp
+                                    <img src="{{ $path }}" width="80" height="80"
+                                        style="margin-right: 10px">
+                                    <p>{{ $d->subjudul }} <a
+                                            href="/masterberita/berita/{{ $d->id }}"><b>Selengkapnya</b></a>
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
+
             </div>
         </div>
     </div>

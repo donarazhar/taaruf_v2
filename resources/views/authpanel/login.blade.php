@@ -10,7 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags-->
     <!-- Title-->
-    <title>AC-Mobile UI Neumorphism</title>
+    <link rel="shortcut icon" href="https://siap.al-azhar.id/upload/favicon.ico" type="image/x-icon" />
+    <title>Ta'aruf Admin - Login</title>
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com/">
     <link

@@ -65,6 +65,12 @@ Route::middleware(['auth:karyawan'])->group(function () {
     // Chat
     Route::get('/chat/{id}', [ChatController::class, 'chat'])->name('chat');
     Route::post('/chat/{id}/store', [ChatController::class, 'store'])->name('store');
+
+    // berita
+    Route::get('/masterberita/berita/1', [MasterInputanController::class, 'berita1'])->name('berita1');
+    Route::get('/masterberita/berita/2', [MasterInputanController::class, 'berita2'])->name('berita2');
+    Route::get('/masterberita/berita/3', [MasterInputanController::class, 'berita3'])->name('berita3');
+    Route::get('/masterberita/berita/4', [MasterInputanController::class, 'berita4'])->name('berita4');
 });
 
 
@@ -73,4 +79,8 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('/proseslogoutadmin', [AuthController::class, 'proseslogoutadmin']);
     Route::get('/masterkaryawan', [MasterInputanController::class, 'masterkaryawan'])->name('masterkaryawan');
     Route::get('/masterkaryawan/{id_karyawan}/verifikasi', [MasterInputanController::class, 'verifikasi'])->name('verifikasi');
+
+    Route::get('/masterberita', [MasterInputanController::class, 'masterberita'])->name('masterberita');
+    Route::post('/masterberita/editberita', [MasterInputanController::class, 'editberita'])->name('editberita');
+    Route::post('/masterberita/{id}/updateberita', [MasterInputanController::class, 'updateberita'])->name('updateberita');
 });
