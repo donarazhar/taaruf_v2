@@ -8,21 +8,21 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Karyawan extends Authenticatable
+class Chat extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = "karyawan";
+    protected $table = "chat";
+
+    protected $fillable = [];
+
+
+    protected $hidden = [];
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that should be cast.
      *
-     * @var array<int, string>
+     * @var array<string, string>
      */
-    protected $fillable = [
-        'id',
-        'nama',
-        'foto',
-
-    ];
+    protected $casts = [];
 }

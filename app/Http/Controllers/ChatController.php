@@ -58,7 +58,6 @@ class ChatController extends Controller
             ->orderBy('chat.tgl_pesan', 'asc')
             ->get();
 
-
         return view('dashboard.progress.chat', compact('karyawan', 'datachat', 'dataprogress'));
     }
 
