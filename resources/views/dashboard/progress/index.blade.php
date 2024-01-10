@@ -12,7 +12,7 @@
     <div class="page-content-wrapper py-3">
         <div class="container">
             <!-- Service Card-->
-            <div class="card bg-primary bg-gradient">
+            <div class="card bg-light bg-gradient">
                 <div class="row text-center">
                     <div class="col-md-12 col-sm-12">
                         <div class="card-body mx-5 mt-2">

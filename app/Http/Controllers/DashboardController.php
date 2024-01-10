@@ -204,4 +204,28 @@ class DashboardController extends Controller
             return Redirect::back()->with(['warning' => 'Maaf ada kesalahan inputan']);
         }
     }
+
+    public function storetanya(Request $request)
+    {
+        $email = $request->email;
+        $pertanyaan = $request->pertanyaan;
+        $tgl = now();
+
+
+        try {
+            $data = [
+                'email' => $email,
+                'pertanyaan' => $pertanyaan,
+                'tgl_tanya' => $tgl
+
+            ];
+
+            $simpan = DB::table('pertanyaan')->insert($data);
+            if ($simpan) {
+                return Redirect::back()->with(['success' => 'Berhasil !!!, Kami akan membalas email anda secepatnya.']);
+            }
+        } catch (\Exception $e) {
+            return Redirect::back()->with(['warning' => 'Maaf ada kesalahan inputan']);
+        }
+    }
 }

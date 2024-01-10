@@ -51,6 +51,7 @@ Route::middleware(['auth:karyawan'])->group(function () {
     Route::post('/profile/{email}/updateprofile', [DashboardController::class, 'updateprofile']);
     Route::post('/profile/{email}/updateprofile2', [DashboardController::class, 'updateprofile2']);
     Route::post('/profile/{email}/updateprofile3', [DashboardController::class, 'updateprofile3']);
+    Route::post('/daftartanya/storetanya', [DashboardController::class, 'storetanya'])->name('storetanya');
 
     // Taaruf
     Route::get('/taaruf', [DashboardController::class, 'taaruf']);
@@ -76,6 +77,9 @@ Route::middleware(['auth:karyawan'])->group(function () {
 
 Route::middleware(['auth:user'])->group(function () {
     Route::get('/dashboardadmin', [DashboardAdminController::class, 'index'])->name('dashboardadmin');
+    Route::get('/daftartanya', [DashboardAdminController::class, 'daftartanya'])->name('daftartanya');
+    Route::get('/prosestaaruf', [DashboardAdminController::class, 'prosestaaruf'])->name('prosestaaruf');
+    Route::get('/prosescetak/{id}', [DashboardAdminController::class, 'prosescetak'])->name('prosescetak');
     Route::get('/proseslogoutadmin', [AuthController::class, 'proseslogoutadmin']);
     Route::get('/masterkaryawan', [MasterInputanController::class, 'masterkaryawan'])->name('masterkaryawan');
     Route::get('/masterkaryawan/{id_karyawan}/verifikasi', [MasterInputanController::class, 'verifikasi'])->name('verifikasi');

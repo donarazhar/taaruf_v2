@@ -101,6 +101,128 @@ class DashboardAdminController extends Controller
                 })->all(),
             ];
         }
+
         return view('dashboardadmin.index', compact('datauser', 'datakaryawan', 'pendidikan', 'suku', 'resultChat'));
+    }
+
+    public function daftartanya()
+    {
+        // Mendapatkan AUTH
+        $email = Auth::guard('user')->user()->email;
+        // Mendapatkan data profile berdasarkan email
+        $datauser = DB::table('users')->where('email', $email)->first();
+        $pertanyaan = DB::table('pertanyaan')->get();
+        return view('dashboardadmin.tanya.index', compact('pertanyaan', 'datauser'));
+    }
+    public function prosestaaruf()
+    {
+        // Mendapatkan AUTH
+        $email = Auth::guard('user')->user()->email;
+        // Mendapatkan data profile berdasarkan email
+        $datauser = DB::table('users')->where('email', $email)->first();
+
+        $dataProgress = DB::table('progress')
+            ->leftJoin('likedislike as authLike', 'progress.email_auth', '=', 'authLike.emailact')
+            ->leftJoin('likedislike as profileLike', 'progress.email_profile', '=', 'profileLike.emailact')
+            ->leftJoin('karyawan as authKaryawan', 'progress.email_auth', '=', 'authKaryawan.email')
+            ->leftJoin('karyawan as profileKaryawan', 'progress.email_profile', '=', 'profileKaryawan.email')
+            ->select(
+                'progress.id',
+                'progress.progress_tgl',
+                'authKaryawan.nama as nama_auth',
+                'profileKaryawan.nama as nama_profile',
+                'authKaryawan.foto as foto_auth',
+                'profileKaryawan.foto as foto_profile',
+                'authLike.status as authStatus',
+                'profileLike.status as profileStatus',
+            )
+            ->get();
+
+        $dataProgressShadow = DB::table('progress_shadow')
+            ->leftJoin('likedislike_shadow as authLike', function ($join) {
+                $join->on('progress_shadow.email_auth', '=', 'authLike.emailact')
+                    ->where('authLike.id_progress', '=', DB::raw('progress_shadow.id'));
+            })
+            ->leftJoin('likedislike_shadow as profileLike', function ($join) {
+                $join->on('progress_shadow.email_profile', '=', 'profileLike.emailact')
+                    ->where('profileLike.id_progress', '=', DB::raw('progress_shadow.id'));
+            })
+            ->leftJoin('karyawan as authKaryawan', 'progress_shadow.email_auth', '=', 'authKaryawan.email')
+            ->leftJoin('karyawan as profileKaryawan', 'progress_shadow.email_profile', '=', 'profileKaryawan.email')
+            ->select(
+                'progress_shadow.id',
+                'progress_shadow.progress_tgl',
+                'authKaryawan.nama as nama_auth',
+                'profileKaryawan.nama as nama_profile',
+                'authKaryawan.foto as foto_auth',
+                'profileKaryawan.foto as foto_profile',
+                DB::raw('CASE WHEN authLike.status IN (0, 1) THEN authLike.status ELSE null END AS authStatus'),
+                DB::raw('CASE WHEN profileLike.status IN (0, 1) THEN profileLike.status ELSE null END AS profileStatus')
+            )
+            ->get();
+
+        $allDataProgress = $dataProgress->merge($dataProgressShadow);
+        // Jika data tidak ditemukan, mungkin ada penanganan khusus yang perlu dilakukan
+        if ($allDataProgress->isEmpty()) {
+            return redirect()->back()->with(['error' => 'Data tidak ditemukan.']);
+        }
+
+        return view('dashboardadmin.proses.index', compact('allDataProgress', 'datauser'));
+    }
+    public function prosescetak($id, Request $request)
+    {
+        // Mendapatkan AUTH
+        $email = Auth::guard('user')->user()->email;
+        // Mendapatkan data profile berdasarkan email
+        $datauser = DB::table('users')->where('email', $email)->first();
+
+        $dataProgress = DB::table('progress')
+            ->leftJoin('likedislike as authLike', 'progress.email_auth', '=', 'authLike.emailact')
+            ->leftJoin('likedislike as profileLike', 'progress.email_profile', '=', 'profileLike.emailact')
+            ->leftJoin('karyawan as authKaryawan', 'progress.email_auth', '=', 'authKaryawan.email')
+            ->leftJoin('karyawan as profileKaryawan', 'progress.email_profile', '=', 'profileKaryawan.email')
+            ->where('progress.id', $id)
+            ->select(
+                'progress.id',
+                'progress.progress_tgl',
+                'authKaryawan.nama as nama_auth',
+                'profileKaryawan.nama as nama_profile',
+                'authKaryawan.foto as foto_auth',
+                'profileKaryawan.foto as foto_profile',
+                'authLike.status as authStatus',
+                'profileLike.status as profileStatus',
+            )
+            ->get();
+
+        $dataProgressShadow = DB::table('progress_shadow')
+            ->leftJoin('likedislike_shadow as authLike', function ($join) {
+                $join->on('progress_shadow.email_auth', '=', 'authLike.emailact')
+                    ->where('authLike.id_progress', '=', DB::raw('progress_shadow.id'));
+            })
+            ->leftJoin('likedislike_shadow as profileLike', function ($join) {
+                $join->on('progress_shadow.email_profile', '=', 'profileLike.emailact')
+                    ->where('profileLike.id_progress', '=', DB::raw('progress_shadow.id'));
+            })
+            ->leftJoin('karyawan as authKaryawan', 'progress_shadow.email_auth', '=', 'authKaryawan.email')
+            ->leftJoin('karyawan as profileKaryawan', 'progress_shadow.email_profile', '=', 'profileKaryawan.email')
+            ->where('progress_shadow.id', $id)
+            ->select(
+                'progress_shadow.id',
+                'progress_shadow.progress_tgl',
+                'authKaryawan.nama as nama_auth',
+                'profileKaryawan.nama as nama_profile',
+                'authKaryawan.foto as foto_auth',
+                'profileKaryawan.foto as foto_profile',
+                DB::raw('CASE WHEN authLike.status IN (0, 1) THEN authLike.status ELSE null END AS authStatus'),
+                DB::raw('CASE WHEN profileLike.status IN (0, 1) THEN profileLike.status ELSE null END AS profileStatus')
+            )
+            ->get();
+
+        $allDataProgress = $dataProgress->merge($dataProgressShadow);
+        // Jika data tidak ditemukan, mungkin ada penanganan khusus yang perlu dilakukan
+        if ($allDataProgress->isEmpty()) {
+            return redirect()->back()->with(['error' => 'Data tidak ditemukan.']);
+        }
+        return view('dashboardadmin.proses.cetak', compact('allDataProgress', 'datauser'));
     }
 }

@@ -189,7 +189,7 @@
         </div>
     </div>
 
-    {{-- Data like --}}
+    {{-- Data hadits --}}
     <div class="page-content-wrapper" style="margin-top: 5px;">
         <div class="container">
             <div class="row">
@@ -239,16 +239,29 @@
                 <h4 class="mb-1 mt-2 text-light text-center">Kontak Kami</h4>
                 <div class="container direction-rtl">
                     <div class="card-body">
+                        {{-- Pesan error --}}
+                        @if (Session::get('success'))
+                            <div class="alert alert-success">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
+                        @if (Session::get('warning'))
+                            <div class="alert alert-warning">
+                                {{ Session::get('warning') }}
+                            </div>
+                        @endif
                         <div class="contact-form">
-                            <form action="#">
+                            <form action="/daftartanya/storetanya" method="POST">
+                                @csrf
                                 <div class="form-group mb-2">
-                                    <input class="form-control" type="email" placeholder="Masukkan email">
+                                    <input class="form-control" type="email" placeholder="Masukkan email"
+                                        name="email" required>
                                 </div>
-                                <div class="form-group mb-2">
-                                    <input type="text" class="form-control" name="textarea"
-                                        placeholder="Tulis pesan"></input>
+                                <div class="form-group mb-3">
+                                    <textarea class="form-control form-control-clicked" name="pertanyaan" cols="30" rows="10"
+                                        placeholder="Tulis pertanyaan" required></textarea>
                                 </div>
-                                <a class="btn btn-info w-100" href="#">Kirim</a>
+                                <button class="btn btn-info w-100" type="submit">Kirim</button>
                             </form>
                         </div>
                     </div>
