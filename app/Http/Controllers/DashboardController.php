@@ -17,8 +17,9 @@ class DashboardController extends Controller
         // Mendapatkan data profile berdasarkan email
         $dataprofile = DB::table('karyawan')->where('email', $email)->first();
         $databerita = DB::table('berita')->get();
-        // dd($databerita);
-        return view('dashboard.index', compact('dataprofile', 'databerita'));
+        $datayoutube = DB::table('youtube')->get();
+
+        return view('dashboard.index', compact('dataprofile', 'databerita', 'datayoutube'));
     }
 
     public function profile()

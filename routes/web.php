@@ -85,4 +85,8 @@ Route::middleware(['auth:user'])->group(function () {
     Route::post('/masterberita/{id}/updateberita', [MasterInputanController::class, 'updateberita'])->name('updateberita');
 
     Route::get('/historychat/{id}', [ChatController::class, 'historychat'])->name('historychat');
+
+    Route::get('/masteryoutube', [MasterInputanController::class, 'masteryoutube'])->name('masteryoutube');
+    Route::post('/masteryoutube/edityoutube', [MasterInputanController::class, 'edityoutube'])->name('edityoutube');
+    Route::post('/masteryoutube/{id}/updateyoutube', [MasterInputanController::class, 'updateyoutube'])->name('updateyoutube');
 });

@@ -30,12 +30,14 @@
             </div>
         @endforeach
     </div>
+
+    {{-- Grafik Line Bar --}}
     <div class="row">
         <div class="col-xl-12 col-md-12 mb-12">
             {{ $datakaryawan->links('vendor.pagination.bootstrap-5') }}
         </div>
     </div>
-
+    {{-- Grafik Line Bar --}}
     <div class="row">
         <!-- Line Chart -->
         <div class="col-xl-8 col-lg-7">
@@ -99,6 +101,13 @@
                     <div class="row">
                     </div>
                     <div class="row">
+                        <style>
+                            .table-container {
+                                max-height: 400px;
+                                overflow-y: auto;
+                                text-align: center;
+                            }
+                        </style>
                         <div class="col-sm-12">
                             <table class="table table-bordered dataTable text-center" id="dataTable" width="100%"
                                 cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">

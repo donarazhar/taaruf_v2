@@ -2,8 +2,15 @@
 <div class="page-content-wrapper py-3 chat-wrapper">
     <div class="container">
         <div class="chat-content-wrap">
+            @php
+                $allChats = $allChats
+                    ->sortBy(function ($item) {
+                        return $item->tgl_pesan_sender ?? $item->tgl_pesan_profile;
+                    })
+                    ->values();
+            @endphp
             @foreach ($allChats as $d)
-                @if ($d->email_auth)
+                @if ($d->nama_sender && $d->pesan_sender !== null)
                     <!-- Outgoing Chat Item -->
                     <div class="single-chat-item outgoing">
                         <div class="user-avatar mt-1">
@@ -26,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                @elseif ($d->email_profile)
+                @elseif ($d->nama_profile && $d->pesan_profile !== null)
                     <!-- Incoming Chat Item -->
                     <div class="single-chat-item incoming">
                         <div class="user-avatar mt-1">
@@ -52,6 +59,7 @@
                 @endif
             @endforeach
         </div>
+
     </div>
 </div>
 @extends('dashboard.dashlayouts.script')

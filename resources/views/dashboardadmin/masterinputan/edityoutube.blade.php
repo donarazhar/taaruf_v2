@@ -6,13 +6,13 @@
 </head>
 
 <body>
-    <form action="/masterberita/{{ $databerita->id }}/updateberita" method="POST" enctype="multipart/form-data">
+    <form action="/masteryoutube/{{ $datayoutube->id }}/updateyoutube" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="card-body">
                 <div class="row text-center">
                     <div class="col-lg-6"> @php
-                        $path = Storage::url('uploads/berita/' . $databerita->foto);
+                        $path = Storage::url('uploads/youtube/' . $datayoutube->gambar);
                     @endphp
                         <img style="height:120px" src="{{ $path }}">
                     </div>
@@ -28,33 +28,18 @@
             <label class="form-label" for="fotoedit">Ubah Foto</label>
             <input class="form-control" id="fotoedit" name="fotoedit" type="file" accept="image/*"
                 onchange="previewImage()">
-            @if ($databerita->foto)
-                <img src="{{ asset('storage/uploads/berita/' . $databerita->foto) }}" alt="Foto Berita" class="mt-2"
-                    style="max-width: 200px; max-height: 200px;" hidden>
+            @if ($datayoutube->gambar)
+                <img src="{{ asset('storage/uploads/youtube/' . $datayoutube->gambar) }}" alt="Foto Youtube"
+                    class="mt-2" style="max-width: 200px; max-height: 200px;" hidden>
             @endif
         </div>
-        <input class="form-control" id="fotoeditlama" name="fotoeditlama" type="text" value="{{ $databerita->foto }}"
-            required hidden>
+        <input class="form-control" id="fotoeditlama" name="fotoeditlama" type="text"
+            value="{{ $datayoutube->gambar }}" required hidden>
 
         <div class="form-group mb-3">
-            <label class="form-label" for="juduledit">Judul</label>
-            <input class="form-control" id="juduledit" name="juduledit" type="text" value="{{ $databerita->judul }}"
-                required>
-        </div>
-        <div class="form-group mb-3">
-            <label class="form-label" for="subjuduledit">Sub Judul</label>
-            <input class="form-control" id="subjuduledit" name="subjuduledit" type="text"
-                value="{{ $databerita->subjudul }}" required>
-        </div>
-        <div class="form-group mb-3">
-            <label class="form-label" for="isiberitaedit">Isi Berita</label>
-            <textarea class="form-control" id="isiberitaedit" name="isiberitaedit" type="text" cols="10" rows="5"
-                value="{{ $databerita->isi }}" required>{{ $databerita->isi }}</textarea>
-        </div>
-        <div class="form-group mb-3">
             <label class="form-label" for="linkedit">Link</label>
-            <input class="form-control" id="linkedit" name="linkedit" type="text" value="{{ $databerita->link }}"
-                readonly required>
+            <input class="form-control" id="linkedit" name="linkedit" type="text" value="{{ $datayoutube->link }}"
+                required>
         </div>
         <button class="btn btn-info w-100 mt-2" type="submit">Update</button>
     </form>

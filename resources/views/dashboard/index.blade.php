@@ -46,7 +46,6 @@
             </div>
         </div>
     </div>
-
     {{-- Area Unit dan Masjid --}}
     <div class="py-2">
         <div class="container direction-rtl mb-3">
@@ -135,6 +134,7 @@
         </div>
     </div>
 
+    {{-- Area Berita --}}
     <div class="section bg-overlay mt-3">
         <div class="row">
             <div class="col-12">
@@ -142,7 +142,6 @@
             </div>
         </div>
     </div>
-    {{-- Area Berita --}}
     <div class="py-2">
         <div class="container direction-rtl mb-3">
             <div class="row">
@@ -188,6 +187,49 @@
 
             </div>
         </div>
+    </div>
+
+    {{-- Data like --}}
+    <div class="page-content-wrapper" style="margin-top: 5px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card bg-primary mb-3 shadow-sm bg-gradient direction-rtl">
+                        <div class="card-body text-center">
+                            <h2 class="text-white" style="text-align: left;">Hadits harian</h2>
+                            <p class="text-white mb-4" style="text-align: justify;">"Rasulullah Shallallahualaihi
+                                Wasallam bersabda: Semoga
+                                Allah
+                                merahmati seorang laki-laki yang bangun di malam hari lalu dia melaksanakan shalat
+                                (malam), kemudian dia membangunkan istrinya, kalau istrinya enggan maka dia akan
+                                memercikkan air pada wajahnya(HR Abu Dawud (no. 1308) dan Ibnu Majah (no. 1336),
+                                dinyatakan shahih oleh syaikh al-Albani)."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="testimonial-slide owl-carousel testimonial-style3">
+                        @foreach ($datayoutube as $dd)
+                            <div class="single-testimonial-slide">
+                                <div class="text-content mb-2">
+                                    <a href="{{ $dd->link }}" target="_blank">
+                                        @php
+                                            $path = Storage::url('uploads/youtube/' . $dd->gambar);
+                                        @endphp
+                                        <img src="{{ $path }}" class="mb-2" alt="YouTube Live">
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pb-3"></div>
     </div>
 
     {{-- Kontak Kami --}}

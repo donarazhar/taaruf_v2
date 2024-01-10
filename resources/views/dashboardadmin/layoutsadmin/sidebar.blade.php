@@ -68,6 +68,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Inputan</h6>
                         <a class="collapse-item" href="/masterberita">Artikel & Berita</a>
+                        <a class="collapse-item" href="/masteryoutube">Youtube</a>
                         <a class="collapse-item" href="/masterkaryawan">Data Karyawan</a>
                     </div>
                 </div>
