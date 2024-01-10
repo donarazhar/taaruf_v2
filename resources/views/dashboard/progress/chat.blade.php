@@ -85,6 +85,5 @@
     </div>
 </div>
 
-{{-- @extends('dashboard.dashlayouts.footer') --}}
 @extends('dashboard.dashlayouts.script')
 @extends('dashboard.dashlayouts.header')

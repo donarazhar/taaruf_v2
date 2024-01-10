@@ -84,4 +84,62 @@ class ChatController extends Controller
             return redirect()->back();
         }
     }
+
+    public function historychat($id)
+    {
+        // Mendapatkan data dari tabel 'chat_shadow' berdasarkan id_progress
+        $chatData = DB::table('chat')
+            ->join('progress', 'chat.id_progress', '=', 'progress.id')
+            ->leftJoin('karyawan as senderKaryawan', 'chat.email_sender', '=', 'senderKaryawan.email')
+            ->leftJoin('karyawan as profileKaryawan', 'progress.email_profile', '=', 'profileKaryawan.email')
+            ->where('progress.id', $id)
+            ->select(
+                'progress.id as id_progress',
+                'progress.email_auth',
+                'progress.email_profile',
+                'senderKaryawan.nama as nama_sender',
+                'profileKaryawan.nama as nama_profile',
+                'senderKaryawan.foto as foto_sender',
+                'profileKaryawan.foto as foto_profile',
+                'chat.pesan as pesan_sender',
+                'chat.pesan as pesan_profile',
+                DB::raw('CASE WHEN chat.email_sender = progress.email_auth THEN chat.pesan ELSE NULL END as pesan_sender'),
+                DB::raw('CASE WHEN chat.email_sender = progress.email_profile THEN chat.pesan ELSE NULL END as pesan_profile'),
+                'chat.tgl_pesan as tgl_pesan_sender',
+                'chat.tgl_pesan as tgl_pesan_profile'
+            )
+            ->get();
+
+        // Mendapatkan data dari tabel 'chat_shadow' berdasarkan id_progress
+        $chatShadowData = DB::table('chat_shadow')
+            ->join('progress_shadow', 'chat_shadow.id_progress', '=', 'progress_shadow.id')
+            ->leftJoin('karyawan as senderKaryawan', 'chat_shadow.email_sender', '=', 'senderKaryawan.email')
+            ->leftJoin('karyawan as profileKaryawan', 'progress_shadow.email_profile', '=', 'profileKaryawan.email')
+            ->where('progress_shadow.id', $id)
+            ->select(
+                'progress_shadow.id as id_progress',
+                'progress_shadow.email_auth',
+                'progress_shadow.email_profile',
+                'senderKaryawan.nama as nama_sender',
+                'profileKaryawan.nama as nama_profile',
+                'senderKaryawan.foto as foto_sender',
+                'profileKaryawan.foto as foto_profile',
+                'chat_shadow.pesan as pesan_sender',
+                'chat_shadow.pesan as pesan_profile',
+                DB::raw('CASE WHEN chat_shadow.email_sender = progress_shadow.email_auth THEN chat_shadow.pesan ELSE NULL END as pesan_sender'),
+                DB::raw('CASE WHEN chat_shadow.email_sender = progress_shadow.email_profile THEN chat_shadow.pesan ELSE NULL END as pesan_profile'),
+                'chat_shadow.tgl_pesan as tgl_pesan_sender',
+                'chat_shadow.tgl_pesan as tgl_pesan_profile'
+            )
+            ->get();
+        // Menggabungkan data dari 'chat' dan 'chat_shadow'
+        $allChats = $chatData->merge($chatShadowData);
+        // Jika data tidak ditemukan, mungkin ada penanganan khusus yang perlu dilakukan
+        if ($allChats->isEmpty()) {
+            return redirect()->back()->with(['error' => 'Data tidak ditemukan.']);
+        }
+
+        return view('dashboardadmin.chathistory.history', compact('allChats'));
+        // Sesuaikan 'nama_view' dengan nama view yang digunakan untuk menampilkan data history chat.
+    }
 }

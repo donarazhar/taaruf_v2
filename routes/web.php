@@ -83,4 +83,6 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('/masterberita', [MasterInputanController::class, 'masterberita'])->name('masterberita');
     Route::post('/masterberita/editberita', [MasterInputanController::class, 'editberita'])->name('editberita');
     Route::post('/masterberita/{id}/updateberita', [MasterInputanController::class, 'updateberita'])->name('updateberita');
+
+    Route::get('/historychat/{id}', [ChatController::class, 'historychat'])->name('historychat');
 });

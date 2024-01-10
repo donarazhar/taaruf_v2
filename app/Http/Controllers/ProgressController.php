@@ -53,12 +53,10 @@ class ProgressController extends Controller
     {
         // Mendapatkan email auth
         $emailAuth = Auth::guard('karyawan')->user()->email;
-
         // Mendapatkan data progress yang akan dipindahkan
         $progressData = DB::table('progress')
             ->leftJoin('likedislike', 'progress.id', '=', 'likedislike.id_progress')
-            ->leftJoin('chat', 'progress.id', '=', 'chat.id_progress')
-            ->select('progress.*', 'chat.*', 'likedislike.*', 'chat.id as chat_id', 'likedislike.id as likedislike_id')
+            ->select('progress.*', 'likedislike.*', 'likedislike.id as likedislike_id')
             ->where('progress.id', $id)
             ->first();
 
@@ -93,14 +91,12 @@ class ProgressController extends Controller
                 ]);
             }
 
-            // Proses hapus semua data dari tabel chat
-            DB::table('chat')->where('id_progress', $id)->delete();
-
-            // Proses hapus data dari tabel likedislike
-            DB::table('likedislike')->where('id_progress', $id)->delete();
-
             // Proses hapus data dari tabel progress
             DB::table('progress')->where('id', $id)->delete();
+            // Proses hapus data dari tabel likedislike
+            DB::table('likedislike')->where('id_progress', $id)->delete();
+            // Proses hapus semua data dari tabel chat
+            DB::table('chat')->where('id_progress', $id)->delete();
 
             // Redirect atau lakukan operasi lain sesuai kebutuhan
             return Redirect::back()->with(['success' => 'Terima kasih, sistem akan permintaan anda !!!']);
