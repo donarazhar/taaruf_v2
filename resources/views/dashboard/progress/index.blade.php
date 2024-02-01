@@ -50,7 +50,8 @@
                                                 src="{{ !empty($pathAuth) ? url($pathAuth) : asset('assets/img/' . $defaultAvatarAuth) }}"
                                                 alt="avatar_auth"
                                                 class="imaged w64 {{ isset($dataAuth) && $dataAuth->jenkel === 'pria' ? '' : 'img-fluid' }}"
-                                                style="height:60px"> <span
+                                                style="height:60px">
+                                            <span
                                                 class="badge 
                                                 @if ($dataAuth->status === 1) bg-success
                                                 @elseif ($dataAuth->status === 0)
@@ -99,16 +100,17 @@
                                                 src="{{ !empty($pathProfile) ? url($pathProfile) : asset('assets/img/' . $defaultAvatarProfile) }}"
                                                 alt="avatar_profile"
                                                 class="imaged w64 {{ isset($dataProfile) && $dataProfile->jenkel === 'pria' ? '' : 'img-fluid' }}"
-                                                style="height:60px"> <span
+                                                style="height:60px">
+
+                                            <span
                                                 class="badge 
-                                                @if ($dataProfile->status === 1) bg-success
-                                                @elseif ($dataProfile->status === 0)
-                                                    bg-primary
-                                                @else
-                                                    bg-secondary @endif">
-                                                @if ($dataProfile->status === 1)
+                                                @if ($dataProfile->status == 1) bg-success
+                                                @elseif ($dataProfile->status == 0) bg-primary
+                                                @else bg-secondary @endif">
+
+                                                @if ($dataProfile->status == 1)
                                                     Merasa Cocok
-                                                @elseif ($dataProfile->status === 0)
+                                                @elseif ($dataProfile->status == 0)
                                                     Maaf Tidak Cocok
                                                 @else
                                                     On Progress
@@ -116,7 +118,8 @@
                                             </span>
 
                                             <p style="color: black;">
-                                                {{ isset($dataProfile) ? $dataProfile->nama : '' }}</p>
+                                                {{ isset($dataProfile) ? $dataProfile->nama : '' }}
+                                            </p>
                                         </div>
                                     @endforeach
                                 </div>
