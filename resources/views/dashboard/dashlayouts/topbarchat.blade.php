@@ -1,6 +1,3 @@
-<!-- Internet Connection Status-->
-<div class="internet-connection-status" id="internetStatus"></div>
-<!-- Header Area-->
 <div class="header-area" id="headerArea">
     <div class="container">
         <!-- Header Content-->

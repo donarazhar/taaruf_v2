@@ -24,8 +24,8 @@
                             <img class="card-img-top {{ $user->jenkel === 'pria' ? '' : 'img-fluid' }}"
                                 src="{{ !empty($path) ? url($path) : asset('assets/img/' . $defaultAvatar) }}"
                                 alt="">
-                            <span
-                                class="badge bg-warning text-dark position-absolute card-badge">{{ $user->nama }}</span>
+                            <span class="badge bg-warning text-dark position-absolute card-badge"
+                                style="top: 0.1rem; left:0.1rem;">{{ $user->nama }}</span>
                             <div class="card-body">
                                 <span class="badge bg-dark mb-2 d-inline-block">{{ $user->nip }}</span>
                                 <small class="d-block mb-2 text-dark" style="font-size: 8px;">Referensi:

@@ -16,7 +16,7 @@
                             @endphp
                             <img src="{{ !empty($path) ? url($path) : asset('assets/img/' . $defaultAvatar) }}"
                                 alt="avatar"
-                                class="mx-auto mb-1 d-block {{ $karyawan->jenkel === 'pria' ? '' : 'img-fluid' }}"
+                                class="mx-auto mt-3 mb-1 d-block {{ $karyawan->jenkel === 'pria' ? '' : 'img-fluid' }}"
                                 style="height:240px">
                         </div>
                         {{-- Akhir Foto Profile --}}

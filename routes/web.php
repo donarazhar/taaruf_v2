@@ -44,22 +44,22 @@ Route::middleware(['guest:user'])->group(function () {
 // ROUTE AUTH
 Route::middleware(['auth:karyawan'])->group(function () {
     Route::get('/proseslogout', [AuthController::class, 'proseslogout']);
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Profile
-    Route::get('/profile', [DashboardController::class, 'profile']);
+    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::post('/profile/{email}/updateprofile', [DashboardController::class, 'updateprofile']);
     Route::post('/profile/{email}/updateprofile2', [DashboardController::class, 'updateprofile2']);
     Route::post('/profile/{email}/updateprofile3', [DashboardController::class, 'updateprofile3']);
     Route::post('/daftartanya/storetanya', [DashboardController::class, 'storetanya'])->name('storetanya');
 
     // Taaruf
-    Route::get('/taaruf', [DashboardController::class, 'taaruf']);
+    Route::get('/taaruf', [DashboardController::class, 'taaruf'])->name('taaruf');
     Route::get('/taaruf/{email}/lihatprofile', [TaarufContoller::class, 'lihatprofile']);
     Route::post('/taaruf/progressprofile', [TaarufContoller::class, 'progressprofile']);
 
     // Progress
-    Route::get('/progress', [ProgressController::class, 'index']);
+    Route::get('/progress', [ProgressController::class, 'index'])->name('progress');
     Route::get('/like/{id}', [ProgressController::class, 'like'])->name('like');
     Route::get('/dislike/{id}', [ProgressController::class, 'dislike'])->name('dislike');
 
