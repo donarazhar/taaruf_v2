@@ -30,9 +30,35 @@ class ProgressController extends Controller
             ->select('progress.*', 'karyawan.nama')
             ->get();
         $likedislike = DB::table('likedislike')->get();
-        // dd($likedislike);
 
-        return view('dashboard.progress.index', compact('dataprogress', 'karyawan', 'likedislike'));
+        $cekemail = DB::table('karyawan')
+            ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
+            ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
+            ->select('karyawan.email', 'biodata.email as biodata_email', 'kriteriapasangan.email as kriteriapasangan_email')
+            ->where('karyawan.email', $user)
+            ->first();
+
+        if ($cekemail) {
+            // Jika email ditemukan di tabel karyawan
+            if (
+                $cekemail->biodata_email !== null && $cekemail->kriteriapasangan_email !== null
+            ) {
+                // Lakukan sesuatu jika email ditemukan di kedua tabel biodata dan kriteriapasangan
+                // Misalnya, aktifkan menu
+                $menuAktif = true;
+            } else {
+                // Lakukan sesuatu jika email tidak ditemukan di salah satu atau kedua tabel
+                // Misalnya, nonaktifkan menu
+                $menuAktif = false;
+            }
+        } else {
+            // Lakukan sesuatu jika email tidak ditemukan di tabel karyawan
+            // Misalnya, nonaktifkan menu
+            $menuAktif = false;
+        }
+
+
+        return view('dashboard.progress.index', compact('dataprogress', 'karyawan', 'likedislike', 'menuAktif'));
     }
 
     public function like($id)

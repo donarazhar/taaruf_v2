@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Cetak Surat Penggantian Kas Kecil</title>
+    <title>Cetak Proses Ta'aruf</title>
 
     <!-- Normalize or reset CSS with your favorite library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">

@@ -19,7 +19,33 @@ class DashboardController extends Controller
         $databerita = DB::table('berita')->get();
         $datayoutube = DB::table('youtube')->get();
 
-        return view('dashboard.index', compact('dataprofile', 'databerita', 'datayoutube'));
+        $cekemail = DB::table('karyawan')
+            ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
+            ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
+            ->select('karyawan.email', 'biodata.email as biodata_email', 'kriteriapasangan.email as kriteriapasangan_email')
+            ->where('karyawan.email', $email)
+            ->first();
+
+        if ($cekemail) {
+            // Jika email ditemukan di tabel karyawan
+            if (
+                $cekemail->biodata_email !== null && $cekemail->kriteriapasangan_email !== null
+            ) {
+                // Lakukan sesuatu jika email ditemukan di kedua tabel biodata dan kriteriapasangan
+                // Misalnya, aktifkan menu
+                $menuAktif = true;
+            } else {
+                // Lakukan sesuatu jika email tidak ditemukan di salah satu atau kedua tabel
+                // Misalnya, nonaktifkan menu
+                $menuAktif = false;
+            }
+        } else {
+            // Lakukan sesuatu jika email tidak ditemukan di tabel karyawan
+            // Misalnya, nonaktifkan menu
+            $menuAktif = false;
+        }
+
+        return view('dashboard.index', compact('dataprofile', 'databerita', 'datayoutube', 'menuAktif'));
     }
 
     public function profile()
@@ -34,7 +60,34 @@ class DashboardController extends Controller
             ->where('karyawan.email', $email)
             ->first();
 
-        return view('dashboard.profile.index', compact('dataprofile', 'dataprofilelengkap'));
+        $cekemail = DB::table('karyawan')
+            ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
+            ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
+            ->select('karyawan.email', 'biodata.email as biodata_email', 'kriteriapasangan.email as kriteriapasangan_email')
+            ->where('karyawan.email', $email)
+            ->first();
+
+        if ($cekemail) {
+            // Jika email ditemukan di tabel karyawan
+            if (
+                $cekemail->biodata_email !== null && $cekemail->kriteriapasangan_email !== null
+            ) {
+                // Lakukan sesuatu jika email ditemukan di kedua tabel biodata dan kriteriapasangan
+                // Misalnya, aktifkan menu
+                $menuAktif = true;
+            } else {
+                // Lakukan sesuatu jika email tidak ditemukan di salah satu atau kedua tabel
+                // Misalnya, nonaktifkan menu
+                $menuAktif = false;
+            }
+        } else {
+            // Lakukan sesuatu jika email tidak ditemukan di tabel karyawan
+            // Misalnya, nonaktifkan menu
+            $menuAktif = false;
+        }
+
+
+        return view('dashboard.profile.index', compact('dataprofile', 'dataprofilelengkap', 'menuAktif'));
     }
 
     public function taaruf()
@@ -49,7 +102,35 @@ class DashboardController extends Controller
         $users = DB::table('karyawan')
             ->where('jenkel', '!=', $jenisKelamin) // Mengambil data dengan jenis kelamin berbeda
             ->get();
-        return view('dashboard.taaruf.index', compact('dataprofile', 'users'));
+
+        $cekemail = DB::table('karyawan')
+            ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
+            ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
+            ->select('karyawan.email', 'biodata.email as biodata_email', 'kriteriapasangan.email as kriteriapasangan_email')
+            ->where('karyawan.email', $email)
+            ->first();
+
+        if ($cekemail) {
+            // Jika email ditemukan di tabel karyawan
+            if (
+                $cekemail->biodata_email !== null && $cekemail->kriteriapasangan_email !== null
+            ) {
+                // Lakukan sesuatu jika email ditemukan di kedua tabel biodata dan kriteriapasangan
+                // Misalnya, aktifkan menu
+                $menuAktif = true;
+            } else {
+                // Lakukan sesuatu jika email tidak ditemukan di salah satu atau kedua tabel
+                // Misalnya, nonaktifkan menu
+                $menuAktif = false;
+            }
+        } else {
+            // Lakukan sesuatu jika email tidak ditemukan di tabel karyawan
+            // Misalnya, nonaktifkan menu
+            $menuAktif = false;
+        }
+
+
+        return view('dashboard.taaruf.index', compact('dataprofile', 'users', 'menuAktif'));
     }
 
     public function progress()
@@ -58,6 +139,9 @@ class DashboardController extends Controller
         $email = Auth::guard('karyawan')->user()->email;
         // Mendapatkan data profile berdasarkan email
         $dataprofile = DB::table('karyawan')->where('email', $email)->first();
+
+
+
         return view('dashboard.progress.index', compact('dataprofile'));
     }
 

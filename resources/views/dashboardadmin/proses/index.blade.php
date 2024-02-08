@@ -91,7 +91,7 @@
                                                 <td>
                                                     @if ($data->profileStatus == 1 && $data->authStatus == 1)
                                                         <a href="{{ route('prosescetak', ['id' => $data->id]) }}"
-                                                            class="btn btn-success btn-sm">Proses</a>
+                                                            target="_blank" class="btn btn-success btn-sm">Proses</a>
                                                     @endif
                                                 </td>
 
