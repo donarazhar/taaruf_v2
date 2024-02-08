@@ -33,7 +33,6 @@ class TaarufContoller extends Controller
             ->first();
 
         $isDisabled = $status ? true : false;
-<<<<<<< HEAD
 
 
         $cekemail = DB::table('karyawan')
@@ -62,9 +61,6 @@ class TaarufContoller extends Controller
             $menuAktif = false;
         }
         return view('dashboard.taaruf.lihatprofile', compact('karyawan', 'emailprofile', 'isDisabled', 'menuAktif'));
-=======
-        return view('dashboard.taaruf.lihatprofile', compact('karyawan', 'emailprofile', 'isDisabled'));
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
     }
     public function progressprofile(Request $request)
     {

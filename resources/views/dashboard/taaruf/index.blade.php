@@ -9,13 +9,7 @@
                     $authUser = Auth::guard('karyawan')->user();
                     $oppositeGender = $authUser->jenkel == 'pria' ? 'wanita' : 'pria';
 
-<<<<<<< HEAD
                     $users = DB::table('karyawan')->where('jenkel', $oppositeGender)->get();
-=======
-                    $users = DB::table('karyawan')
-                        ->where('jenkel', $oppositeGender)
-                        ->get();
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                 @endphp
                 @foreach ($users as $user)
                     <!-- Single Blog Card-->
@@ -43,12 +37,9 @@
                                 </small>
                                 <a class="btn btn-primary btn-sm" href="/taaruf/{{ $user->email }}/lihatprofile">Lihat
                                 </a>
-<<<<<<< HEAD
                                 <a class="btn btn-danger btn-sm" href="/taaruf/{{ $user->email }}/lihatprofile"><i
                                         class="bi bi-heart-fill"></i>
                                 </a>
-=======
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                             </div>
                         </div>
                     </div>

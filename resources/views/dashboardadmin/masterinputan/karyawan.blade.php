@@ -53,21 +53,9 @@
                                                 <td>
                                                     @php
                                                         $path = Storage::url('uploads/karyawan/img/' . $d->foto);
-<<<<<<< HEAD
-                                                    @endphp
-
-                                                    @if (empty($d->foto))
-                                                        <img src="{{ asset('assets/img/nophoto.png') }}"
-                                                            style="height:30px">
-                                                    @else
-                                                        <img src="{{ $path }}" style="height:30px">
-                                                    @endif
-
-=======
 
                                                     @endphp
                                                     <img src="{{ $path }}" style="height:30px">
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                                                 </td>
                                                 <td>{{ $d->nama }}</td>
                                                 <td>{{ $d->pendidikan ?? '-' }}</td>

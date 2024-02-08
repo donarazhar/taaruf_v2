@@ -19,7 +19,6 @@ class DashboardController extends Controller
         $databerita = DB::table('berita')->get();
         $datayoutube = DB::table('youtube')->get();
 
-<<<<<<< HEAD
         $cekemail = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
             ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
@@ -47,9 +46,6 @@ class DashboardController extends Controller
         }
 
         return view('dashboard.index', compact('dataprofile', 'databerita', 'datayoutube', 'menuAktif'));
-=======
-        return view('dashboard.index', compact('dataprofile', 'databerita', 'datayoutube'));
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
     }
 
     public function profile()
@@ -64,7 +60,6 @@ class DashboardController extends Controller
             ->where('karyawan.email', $email)
             ->first();
 
-<<<<<<< HEAD
         $cekemail = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
             ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
@@ -93,9 +88,6 @@ class DashboardController extends Controller
 
 
         return view('dashboard.profile.index', compact('dataprofile', 'dataprofilelengkap', 'menuAktif'));
-=======
-        return view('dashboard.profile.index', compact('dataprofile', 'dataprofilelengkap'));
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
     }
 
     public function taaruf()
@@ -110,7 +102,6 @@ class DashboardController extends Controller
         $users = DB::table('karyawan')
             ->where('jenkel', '!=', $jenisKelamin) // Mengambil data dengan jenis kelamin berbeda
             ->get();
-<<<<<<< HEAD
 
         $cekemail = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
@@ -140,9 +131,6 @@ class DashboardController extends Controller
 
 
         return view('dashboard.taaruf.index', compact('dataprofile', 'users', 'menuAktif'));
-=======
-        return view('dashboard.taaruf.index', compact('dataprofile', 'users'));
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
     }
 
     public function progress()
@@ -151,12 +139,9 @@ class DashboardController extends Controller
         $email = Auth::guard('karyawan')->user()->email;
         // Mendapatkan data profile berdasarkan email
         $dataprofile = DB::table('karyawan')->where('email', $email)->first();
-<<<<<<< HEAD
 
 
 
-=======
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
         return view('dashboard.progress.index', compact('dataprofile'));
     }
 

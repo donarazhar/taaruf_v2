@@ -60,11 +60,7 @@
                                                     bg-secondary @endif">
                                                 @if ($dataAuth->status == 1)
                                                     Sudah Cocok
-<<<<<<< HEAD
                                                 @elseif ($dataAuth->status === 0)
-=======
-                                                @elseif ($dataAuth->status == 0)
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                                                     Maaf Tidak Cocok
                                                 @else
                                                     On Progress
@@ -114,11 +110,7 @@
 
                                                 @if ($dataProfile->status == 1)
                                                     Merasa Cocok
-<<<<<<< HEAD
                                                 @elseif ($dataProfile->status === 0)
-=======
-                                                @elseif ($dataProfile->status == 0)
->>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                                                     Maaf Tidak Cocok
                                                 @else
                                                     On Progress
