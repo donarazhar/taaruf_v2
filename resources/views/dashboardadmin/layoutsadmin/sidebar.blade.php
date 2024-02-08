@@ -16,8 +16,12 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+<<<<<<< HEAD
     <script src="https://cdn.tiny.cloud/1/ke2yr843uv7kjydevaiblj2mi0zm9uwvu9tikkn3sph5wdpc/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
+=======
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Custom styles for this template-->
     <link href="{{ asset('template/css/sb-admin-2.css') }}" rel="stylesheet">
@@ -59,6 +63,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+<<<<<<< HEAD
             <li
                 class="nav-item {{ request()->is(['masterberita', 'masteryoutube', 'masterkaryawan']) ? 'active' : '' }}">
                 <a class="nav-link {{ request()->is(['masterberita', 'masteryoutube', 'masterkaryawan']) ? 'collapsed' : '' }}"
@@ -79,6 +84,20 @@
                             href="/masteryoutube">Youtube</a>
                         <a class="collapse-item {{ request()->is(['masterkaryawan']) ? 'active' : '' }}"
                             href="/masterkaryawan">Data Karyawan</a>
+=======
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Master Data</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Data Inputan</h6>
+                        <a class="collapse-item" href="/masterberita">Artikel & Berita</a>
+                        <a class="collapse-item" href="/masteryoutube">Youtube</a>
+                        <a class="collapse-item" href="/masterkaryawan">Data Karyawan</a>
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                     </div>
                 </div>
             </li>
@@ -87,15 +106,25 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Charts -->
+<<<<<<< HEAD
             <li class="nav-item {{ request()->is(['daftartanya']) ? 'active' : '' }}">
                 <a class="nav-link {{ request()->is(['daftartanya']) ? 'collapsed' : '' }}" href="/daftartanya">
+=======
+            <li class="nav-item">
+                <a class="nav-link" href="/daftartanya">
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Daftar Q n A</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
+<<<<<<< HEAD
             <li class="nav-item {{ request()->is(['prosestaaruf']) ? 'active' : '' }}">
                 <a class="nav-link  {{ request()->is(['prosestaaruf']) ? 'collapsed' : '' }}" href="/prosestaaruf">
+=======
+            <li class="nav-item">
+                <a class="nav-link" href="/prosestaaruf">
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                     <i class="fas fa-fw fa-table"></i>
                     <span>Proses Ta'aruf</span></a>
             </li>

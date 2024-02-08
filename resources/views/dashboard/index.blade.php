@@ -105,13 +105,21 @@
                 <div class="col-4">
                     <div class="feature-card mx-auto text-center">
                         <div class="card shadow mx-auto">
+<<<<<<< HEAD
                             <a class="mx-auto" href="https://donasi.online/masjid-agung-al-azhar/program"
+=======
+                            <a class="mx-auto" href="https://donasi.online/masjid-agung-al-azhar/donasi"
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                                 target="_blank">
                                 <img src="{{ asset('apk/assets/img/demo-img/donasi.png') }}" alt="">
                             </a>
                         </div>
                         <p>
+<<<<<<< HEAD
                             <a href="https://donasi.online/masjid-agung-al-azhar/program" class="mb-0">Donasi MAA
+=======
+                            <a href="https://donasi.online/masjid-agung-al-azhar/donasi" class="mb-0">Donasi MAA
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
                             </a>
                         </p>
                     </div>

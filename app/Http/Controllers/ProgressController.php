@@ -31,6 +31,7 @@ class ProgressController extends Controller
             ->get();
         $likedislike = DB::table('likedislike')->get();
 
+<<<<<<< HEAD
         $cekemail = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
             ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
@@ -59,6 +60,9 @@ class ProgressController extends Controller
 
 
         return view('dashboard.progress.index', compact('dataprogress', 'karyawan', 'likedislike', 'menuAktif'));
+=======
+        return view('dashboard.progress.index', compact('dataprogress', 'karyawan', 'likedislike'));
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
     }
 
     public function like($id)

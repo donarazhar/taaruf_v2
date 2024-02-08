@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <title>Cetak Proses Ta'aruf</title>
+=======
+    <title>Cetak Surat Penggantian Kas Kecil</title>
+>>>>>>> d2b598cf6d3e85ae8975ec357624a4515d74b268
 
     <!-- Normalize or reset CSS with your favorite library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
