@@ -190,7 +190,7 @@
 
                 <div class="row" data-aos="fade-up">
 
-                    <div class="col-lg-3 col-md-6">
+                    {{-- <div class="col-lg-3 col-md-6">
                         <div class="count-box">
                             <i class="bi bi-emoji-smile"></i>
                             <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1"
@@ -207,13 +207,28 @@
                                 class="purecounter"></span>
                             <p>Pendaftar Wanita</p>
                         </div>
+                    </div> --}}
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="count-box">
+                            <i class="bi bi-emoji-smile"></i>
+                            <span>{{ $datapria }}</span>
+                            <p>Pendaftar Pria</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                        <div class="count-box">
+                            <i class="bi bi-emoji-smile"></i>
+                            <span>{{ $datawanita }}</span>
+                            <p>Pendaftar Wanita</p>
+                        </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                         <div class="count-box">
                             <i class="bx bx-like"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span>{{ $totalprogress }}</span>
                             <p>Progress Pasangan</p>
                         </div>
                     </div>
@@ -221,8 +236,7 @@
                     <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
                         <div class="count-box">
                             <i class="bx bx-like"></i>
-                            <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1"
-                                class="purecounter"></span>
+                            <span>{{ $totalproses }}</span>
                             <p>Proses Pasangan</p>
                         </div>
                     </div>

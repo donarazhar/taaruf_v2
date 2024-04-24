@@ -23,7 +23,39 @@ class MasterInputanController extends Controller
         $karyawan = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
             ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
-            ->select('karyawan.*', 'biodata.*', 'kriteriapasangan.*', 'karyawan.id as id_karyawan')
+            ->select(
+                'karyawan.id',
+                'karyawan.nip',
+                'karyawan.nama',
+                'karyawan.email',
+                'karyawan.jenkel',
+                'karyawan.password',
+                'karyawan.referensi',
+                'karyawan.referensi_detail',
+                'karyawan.foto',
+                'karyawan.status',
+                'karyawan.email_verification_token',
+                'biodata.tempatlahir',
+                'biodata.tgllahir',
+                'biodata.goldar',
+                'biodata.statusnikah',
+                'biodata.pekerjaan',
+                'biodata.suku',
+                'biodata.pendidikan',
+                'biodata.hobi',
+                'biodata.motto',
+                'biodata.nohp',
+                'biodata.alamat',
+                'biodata.tinggi',
+                'biodata.berat',
+                'biodata.video',
+                'kriteriapasangan.kriteriaumur',
+                'kriteriapasangan.kriteriatinggi',
+                'kriteriapasangan.kriteriaberat',
+                'kriteriapasangan.kriteriaumum',
+                'kriteriapasangan.kriteriasuku',
+                'karyawan.id as id_karyawan'
+            )
             ->orderBy('id_karyawan', 'asc')
             ->get();
 
@@ -34,10 +66,44 @@ class MasterInputanController extends Controller
     public function verifikasi($id_karyawan)
     {
         // Ambil data karyawan berdasarkan ID
+
         $karyawan = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
             ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
-            ->select('karyawan.*', 'biodata.*', 'kriteriapasangan.*', 'karyawan.id as id_karyawan')
+            ->select(
+                'karyawan.id',
+                'karyawan.nip',
+                'karyawan.nama',
+                'karyawan.email',
+                'karyawan.jenkel',
+                'karyawan.password',
+                'karyawan.referensi',
+                'karyawan.referensi_detail',
+                'karyawan.foto',
+                'karyawan.status',
+                'karyawan.email_verification_token',
+                'biodata.tempatlahir',
+                'biodata.tgllahir',
+                'biodata.goldar',
+                'biodata.statusnikah',
+                'biodata.pekerjaan',
+                'biodata.suku',
+                'biodata.pendidikan',
+                'biodata.hobi',
+                'biodata.motto',
+                'biodata.nohp',
+                'biodata.alamat',
+                'biodata.tinggi',
+                'biodata.berat',
+                'biodata.video',
+                'kriteriapasangan.kriteriaumur',
+                'kriteriapasangan.kriteriatinggi',
+                'kriteriapasangan.kriteriaberat',
+                'kriteriapasangan.kriteriaumum',
+                'kriteriapasangan.kriteriasuku',
+                'karyawan.id as id_karyawan'
+            )
+            ->where('karyawan.id', $id_karyawan)
             ->first();
 
         // Pastikan karyawan ditemukan

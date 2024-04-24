@@ -138,6 +138,7 @@ class DashboardAdminController extends Controller
             )
             ->get();
 
+
         $dataProgressShadow = DB::table('progress_shadow')
             ->leftJoin('likedislike_shadow as authLike', function ($join) {
                 $join->on('progress_shadow.email_auth', '=', 'authLike.emailact')

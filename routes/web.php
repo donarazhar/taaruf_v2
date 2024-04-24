@@ -8,6 +8,7 @@ use App\Http\Controllers\MasterInputanController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\TaarufContoller;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,13 @@ use Illuminate\Support\Facades\Route;
 // ROUTE TAMU/PENGGUNA TANPA LOGIN
 Route::middleware(['guest:karyawan'])->group(function () {
     Route::get('/', function () {
-        return view('auth.beranda');
+        $datapria = DB::table('karyawan')->where('jenkel', 'pria')->count();
+        $datawanita = DB::table('karyawan')->where('jenkel', 'wanita')->count();
+        $totalproses = DB::table('proses')->count();
+        $totalprogress = DB::table('progress')->count();
+
+
+        return view('auth.beranda', compact('datapria', 'datawanita', 'totalproses', 'totalprogress'));
     })->name('/');
     Route::get('/daftar', function () {
         return view('auth.daftar');

@@ -44,17 +44,19 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>
                                                     @php
-                                                        $path = Storage::url('uploads/karyawan/img/' . $data->foto_auth);
+                                                        $path = Storage::url(
+                                                            'uploads/karyawan/img/' . $data->foto_auth,
+                                                        );
                                                     @endphp
                                                     <img src="{{ $path }}" style="height:30px"><span
                                                         class="badge
-                                                        @if ($data->authStatus === 1) badge-success
+                                                        @if ($data->authStatus == 1) badge-success
                                                         @elseif($data->authStatus === 0)
                                                             badge-danger
                                                         @else
                                                             badge-dark @endif
                                                         badge-counter">
-                                                        @if ($data->authStatus === 1)
+                                                        @if ($data->authStatus == 1)
                                                             Merasa Cocok
                                                         @elseif($data->authStatus === 0)
                                                             Tidak Cocok
@@ -66,18 +68,20 @@
                                                 </td>
                                                 <td>
                                                     @php
-                                                        $path = Storage::url('uploads/karyawan/img/' . $data->foto_profile);
+                                                        $path = Storage::url(
+                                                            'uploads/karyawan/img/' . $data->foto_profile,
+                                                        );
 
                                                     @endphp
                                                     <img src="{{ $path }}" style="height:30px"> <span
                                                         class="badge
-                                                        @if ($data->profileStatus === 1) badge-success
+                                                        @if ($data->profileStatus == 1) badge-success
                                                         @elseif($data->profileStatus === 0)
                                                             badge-danger
                                                         @else
                                                             badge-dark @endif
                                                         badge-counter">
-                                                        @if ($data->profileStatus === 1)
+                                                        @if ($data->profileStatus == 1)
                                                             Merasa Cocok
                                                         @elseif($data->profileStatus === 0)
                                                             Tidak Cocok

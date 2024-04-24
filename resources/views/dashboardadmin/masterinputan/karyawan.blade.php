@@ -34,13 +34,13 @@
                                             <th rowspan="1" colspan="1" style="width: auto;"> No</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> NIP</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Foto</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> Email</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;">Lulus</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> TB</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> BB</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;"> Nama</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;">Email</th>
+                                            {{-- <th rowspan="1" colspan="1" style="width: auto;"> TB</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;"> BB</th> --}}
                                             <th rowspan="1" colspan="1" style="width: auto;"> Referensi</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> TTL</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> Kriteria Pasangan</th>
+                                            {{-- <th rowspan="1" colspan="1" style="width: auto;"> TTL</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;"> Kriteria Pasangan</th> --}}
                                             <th rowspan="1" colspan="1" style="width: auto;"> Status</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Aksi</th>
                                         </tr>
@@ -58,14 +58,15 @@
                                                     <img src="{{ $path }}" style="height:30px">
                                                 </td>
                                                 <td>{{ $d->nama }}</td>
-                                                <td>{{ $d->pendidikan ?? '-' }}</td>
-                                                <td>{{ $d->tinggi ?? '-' }} cm</td>
-                                                <td>{{ $d->berat ?? '-' }} kg</td>
+                                                <td>{{ $d->email }}</td>
+                                                {{-- <td>{{ $d->pendidikan ?? '-' }}</td> --}}
+                                                {{-- <td>{{ $d->tinggi ?? '-' }} cm</td>
+                                                <td>{{ $d->berat ?? '-' }} kg</td> --}}
                                                 <td>{{ $d->referensi_detail ?? '-' }}</td>
-                                                <td>{{ $d->tempatlahir ?? '-' }},
+                                                {{-- <td>{{ $d->tempatlahir ?? '-' }},
                                                     {{ $d->tgllahir ? date('d/m/Y', strtotime($d->tgllahir)) : '-' }}
 
-                                                <td>{{ $d->kriteriaumum ?? '-' }}</td>
+                                                <td>{{ $d->kriteriaumum ?? '-' }}</td> --}}
                                                 </td>
                                                 <td>
                                                     <a href="/masterkaryawan/{{ $d->id_karyawan }}/verifikasi"
