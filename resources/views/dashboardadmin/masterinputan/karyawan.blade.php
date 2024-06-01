@@ -35,14 +35,11 @@
                                             <th rowspan="1" colspan="1" style="width: auto;"> NIP</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Foto</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Nama</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;">Email</th>
-                                            {{-- <th rowspan="1" colspan="1" style="width: auto;"> TB</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> BB</th> --}}
+                                            <th rowspan="1" colspan="1" style="width: auto;"> Email</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Referensi</th>
-                                            {{-- <th rowspan="1" colspan="1" style="width: auto;"> TTL</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> Kriteria Pasangan</th> --}}
                                             <th rowspan="1" colspan="1" style="width: auto;"> Status</th>
-                                            <th rowspan="1" colspan="1" style="width: auto;"> Aksi</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;"> Send</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;"> View</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,17 +61,10 @@
                                                 </td>
                                                 <td>{{ $d->nama }}</td>
                                                 <td>{{ $d->email }}</td>
-                                                {{-- <td>{{ $d->pendidikan ?? '-' }}</td> --}}
-                                                {{-- <td>{{ $d->tinggi ?? '-' }} cm</td>
-                                                <td>{{ $d->berat ?? '-' }} kg</td> --}}
                                                 <td>{{ $d->referensi_detail ?? '-' }}</td>
-                                                {{-- <td>{{ $d->tempatlahir ?? '-' }},
-                                                    {{ $d->tgllahir ? date('d/m/Y', strtotime($d->tgllahir)) : '-' }}
-
-                                                <td>{{ $d->kriteriaumum ?? '-' }}</td> --}}
                                                 </td>
                                                 <td>
-                                                    <a href="/masterkaryawan/{{ $d->id_karyawan }}/verifikasi"
+                                                    <a href="/masterkaryawan/{{ $d->id }}/verifikasi"
                                                         class="btn {{ $d->status == 1 ? 'btn-success' : 'btn-warning' }} btn-icon-split btn-sm">
                                                         <span class="icon text-white-50">
                                                             @if ($d->status == 1)
@@ -84,8 +74,18 @@
                                                             @endif
                                                         </span>
                                                     </a>
-
-
+                                                </td>
+                                                <td>
+                                                    <a href="#"
+                                                        class="btn {{ $d->email_verification_token != null ? 'btn-success' : 'btn-danger' }} btn-icon-split btn-sm">
+                                                        <span class="icon text-white-50">
+                                                            @if ($d->email_verification_token != null)
+                                                                <i class="fas fa-check"></i>
+                                                            @elseif ($d->email_verification_token == null)
+                                                                <i class="fas fa-exclamation-triangle"></i>
+                                                            @endif
+                                                        </span>
+                                                    </a>
                                                 </td>
                                                 <td><a href="#" class="btn btn-primary btn-icon-split btn-sm view"
                                                         id="{{ $d->id }}">
