@@ -90,6 +90,7 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('/proseslogoutadmin', [AuthController::class, 'proseslogoutadmin']);
     Route::get('/masterkaryawan', [MasterInputanController::class, 'masterkaryawan'])->name('masterkaryawan');
     Route::get('/masterkaryawan/{id_karyawan}/verifikasi', [MasterInputanController::class, 'verifikasi'])->name('verifikasi');
+    Route::post('/masterkaryawan/viewkaryawan', [MasterInputanController::class, 'viewkaryawan'])->name('viewkaryawan');
 
     Route::get('/masterberita', [MasterInputanController::class, 'masterberita'])->name('masterberita');
     Route::post('/masterberita/editberita', [MasterInputanController::class, 'editberita'])->name('editberita');

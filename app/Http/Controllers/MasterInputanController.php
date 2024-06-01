@@ -161,6 +161,7 @@ class MasterInputanController extends Controller
     }
 
 
+
     public function verify($token)
     {
 
@@ -177,6 +178,24 @@ class MasterInputanController extends Controller
 
         // Redirect atau lakukan operasi lain sesuai kebutuhan
         return Redirect::route('/')->with(['success' => 'Sukses verifikasi !!!']);
+    }
+
+    public function viewkaryawan(Request $request)
+    {
+        $id = $request->id;
+        $email = DB::table('karyawan')
+            ->select('karyawan.email')
+            ->where('id', $id)
+            ->first();
+
+        $datakaryawan = DB::table('karyawan')
+            ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
+            ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
+            ->select('karyawan.email as emailkaryawan', 'karyawan.*', 'biodata.email as emailbiodata', 'biodata.*', 'kriteriapasangan.email as emailkriteria', 'kriteriapasangan.*')
+            ->where('karyawan.email', $email->email)
+            ->get();
+
+        return view('dashboardadmin.masterinputan.viewkaryawan', compact('datakaryawan'));
     }
 
     public function masterberita()

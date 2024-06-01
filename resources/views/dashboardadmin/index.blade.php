@@ -19,10 +19,14 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                @php
-                                    $path = Storage::url('uploads/karyawan/img/' . $d->foto);
-                                @endphp
-                                <img src="{{ $path }}" style="height:60px">
+                                @if (!empty(Auth::guard('karyawan')->user()->foto))
+                                    @php
+                                        $path = Storage::url('uploads/karyawan/img/' . $d->foto);
+                                    @endphp
+                                    <img src="{{ $path }}" style="height:60px">
+                                @else
+                                    <img src="assets/img/nophoto.png" alt="avatar" style="height:60px">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -131,7 +135,9 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 @php
-                                                    $path = Storage::url('uploads/karyawan/img/' . $data['data'][0]['foto_sender']);
+                                                    $path = Storage::url(
+                                                        'uploads/karyawan/img/' . $data['data'][0]['foto_sender'],
+                                                    );
 
                                                 @endphp
                                                 <img src="{{ $path }}" style="height:30px"> |
@@ -139,7 +145,9 @@
                                             </td>
                                             <td>
                                                 @php
-                                                    $path = Storage::url('uploads/karyawan/img/' . $data['data'][0]['foto_profile']);
+                                                    $path = Storage::url(
+                                                        'uploads/karyawan/img/' . $data['data'][0]['foto_profile'],
+                                                    );
 
                                                 @endphp
                                                 <img src="{{ $path }}" style="height:30px"> |

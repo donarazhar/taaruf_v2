@@ -51,11 +51,16 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $d->nip }}</td>
                                                 <td>
-                                                    @php
-                                                        $path = Storage::url('uploads/karyawan/img/' . $d->foto);
+                                                    @if (!empty(Auth::guard('karyawan')->user()->foto))
+                                                        @php
+                                                            $path = Storage::url('uploads/karyawan/img/' . $d->foto);
 
-                                                    @endphp
-                                                    <img src="{{ $path }}" style="height:30px">
+                                                        @endphp
+                                                        <img src="{{ $path }}" style="height:30px">
+                                                    @else
+                                                        <img src="assets/img/nophoto.png" alt="avatar"
+                                                            style="height:30px">
+                                                    @endif
                                                 </td>
                                                 <td>{{ $d->nama }}</td>
                                                 <td>{{ $d->email }}</td>
@@ -82,7 +87,8 @@
 
 
                                                 </td>
-                                                <td><a href="#" class="btn btn-primary btn-icon-split btn-sm">
+                                                <td><a href="#" class="btn btn-primary btn-icon-split btn-sm view"
+                                                        id="{{ $d->id }}">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-search"></i>
                                                         </span>
@@ -99,4 +105,44 @@
             </div>
         </div>
     </div>
+
+    {{-- Modal View --}}
+    <div class="modal modal-blur fade" id="modal-viewKaryawan" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Lihat Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="loadeditform">
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('myscript')
+    <script>
+        $(function() {
+            // Proses edit dengan AJAX
+            $(".view").click(function() {
+                var id = $(this).attr('id');
+                $.ajax({
+                    type: 'POST',
+                    url: '/masterkaryawan/viewkaryawan',
+                    cache: false,
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        id: id
+                    },
+                    success: function(respond) {
+                        $('#loadeditform').html(respond);
+                        // Tampilkan modal setelah konten dimuat
+                        $("#modal-viewKaryawan").modal("show");
+                    }
+                });
+            });
+
+        });
+    </script>
+@endpush

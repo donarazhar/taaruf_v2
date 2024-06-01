@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 </head>
 
 <body>
@@ -11,9 +10,10 @@
         <div class="row">
             <div class="card-body">
                 <div class="row text-center">
-                    <div class="col-lg-6"> @php
-                        $path = Storage::url('uploads/berita/' . $databerita->foto);
-                    @endphp
+                    <div class="col-lg-6">
+                        @php
+                            $path = Storage::url('uploads/berita/' . $databerita->foto);
+                        @endphp
                         <img style="height:120px" src="{{ $path }}">
                     </div>
                     <div class="col-lg-6">
