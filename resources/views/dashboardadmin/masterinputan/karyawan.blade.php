@@ -1,7 +1,6 @@
 @extends('dashboardadmin.layoutsadmin.sidebar')
 @section('content')
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800 mb-4">Table Data Pengguna</h1>
 
@@ -36,6 +35,7 @@
                                             <th rowspan="1" colspan="1" style="width: auto;"> Foto</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Nama</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Email</th>
+                                            <th rowspan="1" colspan="1" style="width: auto;"> Jenkel</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Referensi</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Status</th>
                                             <th rowspan="1" colspan="1" style="width: auto;"> Send</th>
@@ -48,7 +48,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $d->nip }}</td>
                                                 <td>
-                                                <td>
+
                                                     @if ($d->foto == null)
                                                         <img src="assets/img/nophoto.png" alt="avatar"
                                                             style="height:30px">
@@ -63,6 +63,15 @@
                                                 </td>
                                                 <td>{{ $d->nama }}</td>
                                                 <td>{{ $d->email }}</td>
+                                                <td>
+                                                    @if ($d->jenkel == 'wanita')
+                                                        W
+                                                    @elseif ($d->jenkel == 'pria')
+                                                        P
+                                                    @else
+                                                        <!-- Tampilkan teks lain jika diperlukan -->
+                                                    @endif
+                                                </td>
                                                 <td>{{ $d->referensi_detail ?? '-' }}</td>
                                                 </td>
                                                 <td>
