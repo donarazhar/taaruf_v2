@@ -10,14 +10,13 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="card text-center p-2 ">
-                    @if (!empty(Auth::guard('karyawan')->user()->foto))
+                    @if ($karyawan->foto == null)
+                        <img src="assets/img/nophoto.png" alt="avatar" style="width:140px">
+                    @else
                         @php
                             $path = Storage::url('uploads/karyawan/img/' . $karyawan->foto);
-
                         @endphp
                         <img src="{{ $path }}" style="width:140px">
-                    @else
-                        <img src="assets/img/nophoto.png" alt="avatar" style="width:140px">
                     @endif
                 </div>
             </div>

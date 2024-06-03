@@ -48,16 +48,18 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $d->nip }}</td>
                                                 <td>
-                                                    @if (!empty(Auth::guard('karyawan')->user()->foto))
-                                                        @php
-                                                            $path = Storage::url('uploads/karyawan/img/' . $d->foto);
-
-                                                        @endphp
-                                                        <img src="{{ $path }}" style="height:30px">
-                                                    @else
+                                                <td>
+                                                    @if ($d->foto == null)
                                                         <img src="assets/img/nophoto.png" alt="avatar"
                                                             style="height:30px">
+                                                    @else
+                                                        @php
+                                                            $path = Storage::url('uploads/karyawan/img/' . $d->foto);
+                                                        @endphp
+                                                        <img src="{{ $path }}" style="height:30px">
                                                     @endif
+                                                </td>
+
                                                 </td>
                                                 <td>{{ $d->nama }}</td>
                                                 <td>{{ $d->email }}</td>

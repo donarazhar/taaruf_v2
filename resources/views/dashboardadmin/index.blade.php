@@ -19,13 +19,13 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                @if (!empty(Auth::guard('karyawan')->user()->foto))
+                                @if ($d->foto == null)
+                                    <img src="assets/img/nophoto.png" alt="avatar" style="height:30px">
+                                @else
                                     @php
                                         $path = Storage::url('uploads/karyawan/img/' . $d->foto);
                                     @endphp
                                     <img src="{{ $path }}" style="height:60px">
-                                @else
-                                    <img src="assets/img/nophoto.png" alt="avatar" style="height:60px">
                                 @endif
                             </div>
                         </div>
