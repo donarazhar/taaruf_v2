@@ -11,7 +11,9 @@
                         {{-- Foto profile --}}
                         <div class="mx-auto d-block">
                             @php
-                                $path = !empty($karyawan->foto) ? Storage::url('uploads/karyawan/img/' . $karyawan->foto) : '';
+                                $path = !empty($karyawan->foto)
+                                    ? Storage::url('uploads/karyawan/img/' . $karyawan->foto)
+                                    : '';
                                 $defaultAvatar = $karyawan->jenkel === 'pria' ? 'avatar.jpg' : 'avatarwanita.jpg';
                             @endphp
                             <img src="{{ !empty($path) ? url($path) : asset('assets/img/' . $defaultAvatar) }}"
@@ -43,9 +45,9 @@
                                 Lengkap</span>
                         </div>
                         <div class="login-meta-data text-center" style="line-height: 0.3rem;">
-                            <p>Alamat : {{ $karyawan->alamat }}</p>
-                            <p>Hobi : {{ $karyawan->hobi }}</p>
-                            <p>Motto : {{ $karyawan->motto }}</p>
+                            <p style="line-height: 1rem;">Alamat : {{ $karyawan->alamat }}</p>
+                            <p style="line-height: 1rem;">Hobi : {{ $karyawan->hobi }}</p>
+                            <p style="line-height: 1rem;">Motto : {{ $karyawan->motto }}</p>
                         </div>
                         <hr>
                         <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
@@ -54,10 +56,11 @@
                                 Pasangan</span>
                         </div>
                         <div class="login-meta-data text-center" style="line-height: 0.3rem;">
-                            <p>Kriteria Suku : {{ $karyawan->kriteriasuku }}</p>
-                            <p>Rentang Berat : {{ $karyawan->kriteriaberat }}</p>
-                            <p>Rentang Tinggi : {{ $karyawan->kriteriatinggi }}</p>
-                            <p>Kriteria Umum : <br><br><br><br> {{ $karyawan->kriteriaumum }}</p>
+                            <p style="line-height: 1rem;">Kriteria Suku : {{ $karyawan->kriteriasuku }}</p>
+                            <p style="line-height: 1rem;">Rentang Berat : {{ $karyawan->kriteriaberat }}</p>
+                            <p style="line-height: 1rem;">Rentang Tinggi : {{ $karyawan->kriteriatinggi }}</p>
+                            <p style="line-height: 1rem;">Kriteria Umum : <br><br><br><br>
+                                {{ $karyawan->kriteriaumum }}</p>
                         </div>
                         <hr>
                         <input class="form-control" type="text" name="emailprofile" id="emailprofile"
