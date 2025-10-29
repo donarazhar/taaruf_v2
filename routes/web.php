@@ -29,7 +29,7 @@ Route::middleware(['guest:karyawan'])->group(function () {
         $totalprogress = DB::table('progress')->count();
 
 
-        return view('auth.beranda', compact('datapria', 'datawanita', 'totalproses', 'totalprogress'));
+        return view('auth.home', compact('datapria', 'datawanita', 'totalproses', 'totalprogress'));
     })->name('/');
     Route::get('/daftar', function () {
         return view('auth.daftar');
@@ -40,6 +40,7 @@ Route::middleware(['guest:karyawan'])->group(function () {
     Route::post('/prosesdaftar', [AuthController::class, 'prosesdaftar']);
     Route::post('/proseslogin', [AuthController::class, 'proseslogin']);
     Route::get('/masterkaryawan/verify/{token}', [MasterInputanController::class, 'verify'])->name('verify');
+    Route::post('/kirimpertanyaan', [AuthController::class, 'kirimpertanyaan']);
 });
 Route::middleware(['guest:user'])->group(function () {
     Route::get('/panel', function () {
@@ -73,6 +74,10 @@ Route::middleware(['auth:karyawan'])->group(function () {
     // Chat
     Route::get('/chat/{id}', [ChatController::class, 'chat'])->name('chat');
     Route::post('/chat/{id}/store', [ChatController::class, 'store'])->name('store');
+
+    // Realtime chat fetch (AJAX)
+    Route::get('/chat/{id}/fetch', [ChatController::class, 'fetch'])->name('chat.fetch');
+
 
     // berita
     Route::get('/masterberita/berita/1', [MasterInputanController::class, 'berita1'])->name('berita1');

@@ -59,6 +59,7 @@ class DashboardController extends Controller
             ->leftJoin('kriteriapasangan', 'karyawan.email', '=', 'kriteriapasangan.email')
             ->where('karyawan.email', $email)
             ->first();
+        // dd($dataprofilelengkap);
 
         $cekemail = DB::table('karyawan')
             ->leftJoin('biodata', 'karyawan.email', '=', 'biodata.email')
@@ -284,7 +285,6 @@ class DashboardController extends Controller
 
             return Redirect::back()->with(['success' => 'Berhasil diupdate']);
         } catch (\Exception $e) {
-            dd($e);
             return Redirect::back()->with(['warning' => 'Maaf ada kesalahan inputan']);
         }
     }

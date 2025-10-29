@@ -85,6 +85,36 @@ class ChatController extends Controller
         }
     }
 
+    public function fetch($id)
+    {
+        $emailAuth = Auth::guard('karyawan')->user()->email;
+
+        $datachat = DB::table('chat')
+            ->join('progress', 'progress.id', '=', 'chat.id_progress')
+            ->leftJoin('karyawan', 'karyawan.email', '=', 'chat.email_sender')
+            ->where('progress.id', $id)
+            ->where(function ($query) use ($emailAuth) {
+                $query->where('progress.email_auth', $emailAuth)
+                    ->orWhere('progress.email_profile', $emailAuth);
+            })
+            ->where('progress.status', 1)
+            ->select(
+                'chat.id',
+                'progress.id as id_progress',
+                'chat.email_sender',
+                'chat.pesan',
+                'chat.tgl_pesan',
+                'karyawan.nama',
+                'karyawan.foto',
+                'karyawan.jenkel'
+            )
+            ->orderBy('chat.tgl_pesan', 'asc')
+            ->get();
+
+        return response()->json($datachat);
+    }
+
+
     public function historychat($id)
     {
         // Mendapatkan data dari tabel 'chat_shadow' berdasarkan id_progress

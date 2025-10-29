@@ -20,12 +20,11 @@ class MasterInputanController extends Controller
         $user = Auth::guard('user')->user()->email;
         // Mendapatkan data user berdasarkan email
         $datauser = DB::table('users')->where('email', $user)->first();
+        // SESUDAH
         $karyawan = DB::table('karyawan')
-            ->select(
-                'karyawan.*'
-            )
-            ->orderBy('id', 'asc')
-            ->get();
+            ->orderBy('created_at', 'desc')
+            ->paginate(10); // 10 data per halaman
+
 
         return view('dashboardadmin.masterinputan.karyawan', compact('datauser', 'karyawan'));
     }

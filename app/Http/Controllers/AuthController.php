@@ -55,7 +55,7 @@ class AuthController extends Controller
     // Login karyawam
     public function proseslogin(Request $request)
     {
-
+        // dd($request->all());
         if (Auth::guard('karyawan')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => '1'])) {
             return redirect('/dashboard');
         } else {
@@ -95,6 +95,26 @@ class AuthController extends Controller
         if (Auth::guard('user')->check()) {
             Auth::guard('user')->logout();
             return redirect('/panel');
+        }
+    }
+
+    public function kirimpertanyaan(Request $request)
+    {
+        $request->validate([
+            'email_tanya' => 'required|email',
+            'isi_tanya' => 'required|string',
+        ]);
+        dd($request->all());
+        try {
+            DB::table('pertanyaan')->insert([
+                'email' => $request->email_tanya,
+                'pertanyaan' => $request->isi_tanya,
+                'tgl_tanya' => now(),
+            ]);
+
+            return Redirect::back()->with(['success' => 'Pertanyaan Anda telah berhasil dikirim.']);
+        } catch (\Exception $e) {
+            return Redirect::back()->with(['warning' => 'Maaf, terjadi kesalahan. Silakan coba lagi.']);
         }
     }
 }
